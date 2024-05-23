@@ -3,6 +3,23 @@
 	$query=mysql_query("select * from data_training order by(id)");
 	$jumlah=mysql_num_rows($query);	
 	
+
+	// 0-25 : Cukup
+	// 26-50 : Baik
+	// 51-75 : Cukup baik
+	// 76-100 : Sangat baik
+	function getKeteragan($nilai){
+		if($nilai>=0 && $nilai<=25){
+			return "Cukup";
+		}else if($nilai>=26 && $nilai<=50){
+			return "Baik";
+		}else if($nilai>=51 && $nilai<=75){
+			return "Cukup Baik";
+		}else if($nilai>=76 && $nilai<=100){
+			return "Sangat Baik";
+		}
+	}
+
 	if($jumlah==0){
 		echo "<center><h3>Data training masih kosong...</h3></center>";
 	}else{
@@ -22,7 +39,14 @@
 			?>
 			<table bgcolor='#7c96ba' border='1' cellspacing='0' cellspading='0' align='center' width=900>
 				<tr>
-					<th>No</th><th>Instansi</th><th>Status</th><th>Jurusan</th><th>Rata-rata UN</th><th>Status Kerja</th><th>Motivasi</th><th>IPK</th>	
+					<th>No</th>
+					<th>Sains</th>
+					<th>Matematika</th>
+					<th>B. Indonesia</th>
+					<th>B. Inggris</th>
+					<th>IPS</th>
+					<th>Aqidah Akhlaq</th>
+					<th>Terbaik</th>
 				</tr>
 			<?php
 				$warna1 = '#ffffff';
@@ -37,14 +61,14 @@
 					} 		
 				?>
 					<tr bgcolor=<?php echo $warna; ?> align=center>
-						<td><?php echo $row['id'];?></td>			
-						<td><?php echo $row['instansi'];?></td>
-						<td><?php echo $row['status'];?></td>
-						<td><?php echo $row['jurusan'];?></td>
-						<td><?php echo $row['rata_un'];?></td>
-						<td><?php echo $row['kerja'];?></td>
-						<td><?php echo $row['motivasi'];?></td>
-						<td><?php echo $row['ipk'];?></td>			
+						<td><?php echo getKeteragan($row['id']);?></td>			
+						<td><?php echo getKeteragan($row['sains']);?></td>
+						<td><?php echo getKeteragan($row['math']);?></td>
+						<td><?php echo getKeteragan($row['bindo']);?></td>
+						<td><?php echo getKeteragan($row['bing']);?></td>
+						<td><?php echo getKeteragan($row['ips']);?></td>
+						<td><?php echo getKeteragan($row['aqidah']);?></td>
+						<td><?php echo getKeteragan($row['terbaik']);?></td>	
 					</tr>
 				<?php
 					$no++;

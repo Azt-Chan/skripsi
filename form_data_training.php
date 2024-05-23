@@ -1,58 +1,83 @@
 <form method=POST action='' >
 	<table align='center' >
 		<tr>
+			<td>
+				0-25 : Cukup
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				26-50 : Baik
+			</td>
+		</tr>
+		<tr>
+			<td>
+				51-75 : Cukup baik
+			</td>
+		</tr>
+		<tr>
+			<td>
+				76-100 : Sangat baik
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<br/>
+			</td>
+		</tr>
+
+		<tr>
 			<td colspan=2><b><center>Tambah Data Training</center></b></td>
 		</tr>
+
+
+
+		
+
 		<tr>
-			<td>Instansi</td>        
+			<td>Sains</td>        
 			<td>: </td>
-			<td>	<input type='radio' name='instansi' value='SMA' required="required">SMA </td>
-			<td>	<input type='radio' name='instansi' value='SMK'>SMK </td>
-			<td>	<input type='radio' name='instansi' value='MA'>MA 	</td>						
+			<td>	<input name='sains' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>										
 		</tr>
 
 		<tr>
-			<td>Status</td>        
+			<td>Matematika</td>        
 			<td>: </td>
-			<td>	<input type='radio' name='status' value='Negeri' required="required">Negeri </td>
-			<td>	<input type='radio' name='status' value='Swasta'>Swasta </td>
+			<td>	<input name='math' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>										
 		</tr>
 
 		<tr>
-			<td>Jurusan</td>        
+			<td>B. Indonesia</td>        
 			<td>: </td>
-			<td>	<input type='radio' name='jurusan' value='IPA' required="required">IPA </td>
-			<td>	<input type='radio' name='jurusan' value='IPS'>IPS </td>
-			<td>	<input type='radio' name='jurusan' value='Bahasa'>Bahasa </td>
-			<td>	<input type='radio' name='jurusan' value='Teknik'>Teknik </td>
-			<td>	<input type='radio' name='jurusan' value='Administrasi'>Administrasi </td>
+			<td>	<input name='bindo' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>										
 		</tr>
 
 		<tr>
-			<td>Nilai Rata UN</td>        
+			<td>B. Inggris</td>        
 			<td>: </td>
-			<td>	<input name='rataUN' type='text' style="width:50px;" required="required"> </td>
-		</tr>		
+			<td>	<input name='bing' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>					
+		</tr>
 
 		<tr>
-			<td>Kerja</td>        
+			<td>IPS</td>        
 			<td>: </td>
-			<td>	<input type='radio' name='kerja' value='Sudah' required="required">Sudah </td>
-			<td>	<input type='radio' name='kerja' value='Belum'>Belum </td>
+			<td>	<input name='ips' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>
 		</tr>
+
 		<tr>
-			<td>Motivasi</td>        
+			<td>Aqidah Akhlaq</td>        
 			<td>: </td>
-			<td>	<input type='radio' name='motivasi' value='Sendiri' required="required">Sendiri </td>
-			<td>	<input type='radio' name='motivasi' value='Orang Tua'>Orang tua </td>
-			<td>	<input type='radio' name='motivasi' value='Orang Lain'>Orang lain </td>
+			<td>	<input name='aqidah' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>				
 		</tr>
+
 		<tr>
-			<td><b>Prestasi</b></td>        
+			<td><b>Terbaik</b></td>        
 			<td><b>: </b></td>
-			<td><b>	<input type='radio' name='prestasi' value='Tinggi' required="required">Tinggi </b></td>
-			<td><b>	<input type='radio' name='prestasi' value='Rendah'>Rendah </b></td>
-		</tr>
+			<td><b>	<input type='radio' name='terbaik' value='Ya' required="required">Ya </b></td>
+			<td><b>	<input type='radio' name='terbaik' value='Ya'>Tidak </b></td>
+		</tr>		
 		<tr>
 			<td colspan=2>
 				<input type=submit name=submit value=Submit>
@@ -63,17 +88,21 @@
 </form>
 <?php
 if (isset($_POST['submit'])) {
-    mysql_query("INSERT INTO data_training 
-				(instansi,status,jurusan,rata_un,kerja,motivasi,ipk)
+	$result = mysql_query("INSERT INTO data_training 
+				(sains,math,bindo,bing,ips,aqidah,terbaik)
 				VALUES(
-					'$_POST[instansi]',
-					'$_POST[status]',
-					'$_POST[jurusan]',
-					'$_POST[rataUN]',
-					'$_POST[kerja]',
-					'$_POST[motivasi]',
-					'$_POST[prestasi]'
+					'$_POST[sains]',
+					'$_POST[math]',
+					'$_POST[bindo]',
+					'$_POST[bing]',
+					'$_POST[ips]',
+					'$_POST[aqidah]',
+					'$_POST[terbaik]'
 				)");
+
+	if(!$result) {
+		die("Database query failed: " . mysql_error());
+	} 
     
 }
 ?>

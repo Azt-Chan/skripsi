@@ -4,9 +4,9 @@
 			<td colspan=2><b><center>Tambah Data Mahasiswa</center></b></td>
 		</tr>
 		<tr>
-			<td>NIM</td>        
+			<td>NIS</td>        
 			<td>: </td>
-			<td> <input name='nim' type='text' style="width:100px;" required="required"> </td>			
+			<td> <input name='nis' type='text' style="width:100px;" required="required"> </td>			
 		</tr>
 		<tr>
 			<td>Nama</td>        
@@ -34,8 +34,10 @@
 			<td>: </td>
 			<td><select name="kelas" style="width:100px;" required="required">
 					<option value=''>-</option>
-					<option value='Pagi' >Pagi</option>
-					<option value='Sore'>Sore</option>
+					<option value='A' >A</option>
+					<option value='B'>B</option>
+					<option value='C'>C</option>
+					<option value='D'>D</option>
 				</select>
 			</td>
 		</tr>		
@@ -49,14 +51,14 @@
 </form>
 <?php
 if (isset($_POST['submit'])) {
-	$nim = $_POST['nim'];
+	$nis = $_POST['nis'];
 	$nama = $_POST['nama'];
 	$jk = $_POST['jenisKelamin'];
 	$angkatan = $_POST['angkatan'];
 	$kelas = $_POST['kelas'];
     mysql_query("INSERT INTO mahasiswa 				
 				VALUES(
-					'$nim',
+					'$nis',
 					'$nama',
 					'$jk',
 					'$angkatan',
@@ -64,7 +66,7 @@ if (isset($_POST['submit'])) {
 				)");
     mysql_query("INSERT INTO user 				
 				VALUES(
-					'$nim',
+					'$nis',
 					'$nama',
 					'$nim',
 					'1'										

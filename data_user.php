@@ -38,7 +38,14 @@
 		?>			
 			<table bgcolor='#7c96ba' border='1' cellspacing='0' cellspading='0' align='center' width=900>
 				<tr align='center'>
-					<th>No</th><th>UserId/NIM</th><th>Nama</th><th>Jenis Kelamin</th><th>Angkatan</th><th>Kelas</th><th>Status Prediksi</th><th>Action</th>
+					<th>No</th>
+					<th>NIS</th>
+					<th>Nama</th>
+					<th>Jenis Kelamin</th>
+					<th>Angkatan</th>
+					<th>Kelas</th>
+					<th>Status Prediksi</th>
+					<th>Action</th>
 				</tr>
 		<?php
 				$warna1 = '#ffffff';
@@ -46,8 +53,8 @@
 				$warna  = $warna1; 	
 				$no=1; 
 				while($row=mysql_fetch_array($query)){
-					$nim=$row['nim'];
-					$que=mysql_query("SELECT * FROM hasil_prediksi WHERE nim = '$nim'");
+					$nis=$row['nis'];
+					$que=mysql_query("SELECT * FROM hasil_prediksi WHERE nim = '$nis'");
 					$statusPrediksi="";
 					//jika mahasiswa sudah melakukan prediksi
 					if (mysql_num_rows($que) == 1) {
@@ -63,11 +70,11 @@
 			?>
 					<tr bgcolor=<?php echo $warna; ?> align='center'>
 						<td><?php echo $no;?></td>			
-						<td><?php echo $row[0];?></td>
-						<td><?php echo $row[1];?></td>
-						<td><?php echo $row[2];?></td>
-						<td><?php echo $row[3];?></td>
-						<td><?php echo $row[4];?></td>
+						<td><?php echo $row['nis'];?></td>
+						<td><?php echo $row['nama'];?></td>
+						<td><?php echo $row['kelas'];?></td>
+						<td><?php echo $row['angkatan'];?></td>
+						<td><?php echo $row['jenis_kelamin'] === 'L' ? 'Laki-laki' : 'Perempuan' ;?></td>
 						<td><?php 
 								if($statusPrediksi=='Sudah'){
 									echo "<strong>".$statusPrediksi."</strong>";

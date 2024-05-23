@@ -38,7 +38,15 @@
 	?>			
 			<table bgcolor='#7c96ba' border='1' cellspacing='0' cellspading='0' align='center' width=900>
 				<tr align='center'>
-					<th>No</th><th>Instansi</th><th>Status</th><th>Jurusan</th><th>Nilai Rata UN</th><th>Status Kerja</th><th>Motivasi</th><th><b>Prestasi</b></th><th>Action</th>	
+					<th>No</th>
+					<th>Sains</th>
+					<th>Matematika</th>
+					<th>B. Indonesia</th>
+					<th>B. Inggris</th>
+					<th>IPS</th>
+					<th>Aqidah Akhlaq</th>
+					<th>Terbaik</th>
+					<th>Action</th>	
 				</tr>
 			<?php
 				$warna1 = '#ffffff';
@@ -54,13 +62,13 @@
 			?>
 					<tr bgcolor=<?php echo $warna; ?> align='center'>
 						<td><?php echo $no;?></td>			
-						<td><?php echo $row['instansi'];?></td>
-						<td><?php echo $row['status'];?></td>
-						<td><?php echo $row['jurusan'];?></td>
-						<td><?php echo $row['rata_un'];?></td>
-						<td><?php echo $row['kerja'];?></td>
-						<td><?php echo $row['motivasi'];?></td>
-						<td><b><?php echo $row['ipk'];?></b></td>
+						<td><?php echo $row['sains'];?></td>
+						<td><?php echo $row['math'];?></td>
+						<td><?php echo $row['bindo'];?></td>
+						<td><?php echo $row['bing'];?></td>
+						<td><?php echo $row['ips'];?></td>
+						<td><?php echo $row['aqidah'];?></td>
+						<td><?php echo $row['terbaik'];?></td>
 						<td>
 							<a href="index.php?menu=data&act=update&id=<?php echo $row['id']; ?>">Update | </a>	
 							<a href="data_training.php?act=delete&id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?')">Delete</a>	
