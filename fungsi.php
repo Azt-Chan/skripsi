@@ -137,7 +137,7 @@
 		if($gain>0){
 			echo "Gain ".$atribut." = ".$gain."<br>";
 		}		
-		mysql_query("INSERT INTO gain VALUES ('','$atribut','$gain')");
+		mysql_query("INSERT INTO gain (atribut,gain) VALUES ('$atribut','$gain')");
 	}
 	//fungsi menghitung entropy
 	function hitung_entropy($nilai1 , $nilai2){
@@ -210,10 +210,10 @@
 				"<br>Rasio = ".$rasio3."<br>";
 				
 			//insert 
-			mysql_query("INSERT INTO rasio_gain VALUES 
-						('' , 'opsi1' , '$nilai1' , '$nilai2 , $nilai3' , '$rasio1'),
-						('' , 'opsi2' , '$nilai2' , '$nilai3 , $nilai1' , '$rasio2'),
-						('' , 'opsi3' , '$nilai3' , '$nilai1 , $nilai2' , '$rasio3')");
+			mysql_query("INSERT INTO rasio_gain (opsi,cabang1,cabang2,rasio_gain) VALUES 
+						('opsi1' , '$nilai1' , '$nilai2 , $nilai3' , '$rasio1'),
+						('opsi2' , '$nilai2' , '$nilai3 , $nilai1' , '$rasio2'),
+						('opsi3' , '$nilai3' , '$nilai1 , $nilai2' , '$rasio3')");
 		}
 		else if($jmlNilai==4){
 			$opsi11 = jumlah_data("$data_kasus ($atribut='$nilai2' OR $atribut='$nilai3' OR $atribut='$nilai4')");
@@ -269,11 +269,11 @@
 				"<br>Rasio = ".$rasio4."<br>";			
 			
 			//insert 
-			mysql_query("INSERT INTO rasio_gain VALUES 
-						('' , 'opsi1' , '$nilai1' , '$nilai2 , $nilai3 , $nilai4' , '$rasio1'),
-						('' , 'opsi2' , '$nilai2' , '$nilai3 , $nilai4 , $nilai1' , '$rasio2'),
-						('' , 'opsi3' , '$nilai3' , '$nilai4 , $nilai1 , $nilai2' , '$rasio3'),
-						('' , 'opsi4' , '$nilai4' , '$nilai1 , $nilai2 , $nilai3' , '$rasio4')");
+			mysql_query("INSERT INTO rasio_gain (opsi,cabang1,cabang2,rasio_gain) VALUES 
+						('opsi1' , '$nilai1' , '$nilai2 , $nilai3 , $nilai4' , '$rasio1'),
+						('opsi2' , '$nilai2' , '$nilai3 , $nilai4 , $nilai1' , '$rasio2'),
+						('opsi3' , '$nilai3' , '$nilai4 , $nilai1 , $nilai2' , '$rasio3'),
+						('opsi4' , '$nilai4' , '$nilai1 , $nilai2 , $nilai3' , '$rasio4')");
 		}else if($jmlNilai==5){
 			$opsi11 = jumlah_data("$data_kasus ($atribut='$nilai2' OR $atribut='$nilai3' OR $atribut='$nilai4' OR $atribut='$nilai5')");
 			$opsi12 = jumlah_data("$data_kasus $atribut='$nilai1'");
@@ -339,12 +339,12 @@
 				"<br>Rasio = ".$rasio5."<br>";	
 			
 			//insert 
-			mysql_query("INSERT INTO rasio_gain VALUES 
-						('' , 'opsi1' , '$nilai1' , '$nilai2 , $nilai3 , $nilai4 , $nilai5' , '$rasio1'),
-						('' , 'opsi2' , '$nilai2' , '$nilai3 , $nilai4 , $nilai5 , $nilai1' , '$rasio2'),
-						('' , 'opsi3' , '$nilai3' , '$nilai4 , $nilai5 , $nilai1 , $nilai2' , '$rasio3'),
-						('' , 'opsi4' , '$nilai4' , '$nilai5 , $nilai1 , $nilai2 , $nilai3' , '$rasio4'),
-						('' , 'opsi5' , '$nilai5' , '$nilai1 , $nilai2 , $nilai3 , $nilai4' , '$rasio5')");
+			mysql_query("INSERT INTO rasio_gain (opsi,cabang1,cabang2,rasio_gain) VALUES 
+						('opsi1' , '$nilai1' , '$nilai2 , $nilai3 , $nilai4 , $nilai5' , '$rasio1'),
+						('opsi2' , '$nilai2' , '$nilai3 , $nilai4 , $nilai5 , $nilai1' , '$rasio2'),
+						('opsi3' , '$nilai3' , '$nilai4 , $nilai5 , $nilai1 , $nilai2' , '$rasio3'),
+						('opsi4' , '$nilai4' , '$nilai5 , $nilai1 , $nilai2 , $nilai3' , '$rasio4'),
+						('opsi5' , '$nilai5' , '$nilai1 , $nilai2 , $nilai3 , $nilai4' , '$rasio5')");
 		}
 		$sql_max = mysql_query("SELECT MAX(rasio_gain) FROM rasio_gain");
 		$row_max = mysql_fetch_array($sql_max);	
