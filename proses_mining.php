@@ -1,7 +1,6 @@
 <?php
 	$awal = microtime(true); 
 	include 'koneksi.php';
-	include 'fungsi.php';
 	mysql_query("TRUNCATE pohon_keputusan");	
 	pembentukan_tree("","");
 	echo "<br><h1><center>---PROSES SELESAI---</center></h1>";
@@ -66,10 +65,10 @@
 		}		
 		echo $kondisi."<br>";
 		//cek data heterogen / homogen???
-		$cek = cek_heterohomogen('ipk',$kondisi);		
+		$cek = cek_heterohomogen('terbaik',$kondisi);		
 		if($cek=='homogen'){
 			echo "<br>LEAF ";
-			$sql_keputusan = mysql_query("SELECT DISTINCT(ipk) FROM data_training WHERE $kondisi");
+			$sql_keputusan = mysql_query("SELECT DISTINCT(terbaik) FROM data_training WHERE $kondisi");
 			$row_keputusan = mysql_fetch_array($sql_keputusan);	
 			$keputusan = $row_keputusan['0'];
 			//insert atau lakukan pemangkasan cabang
@@ -81,14 +80,14 @@
 			$jumlah = jumlah_data($kondisi);				
 			if($jumlah<8){
 				echo "<br>LEAF ";
-				$Ntinggi = $kondisi." AND ipk='tinggi'";
-				$Nrendah = $kondisi." AND ipk='rendah'";
+				$Ntinggi = $kondisi." AND terbaik='Ya'";
+				$Nrendah = $kondisi." AND terbaik='Tidak'";
 				$jumlahTinggi = jumlah_data("$Ntinggi");
 				$jumlahRendah = jumlah_data("$Nrendah");				
 				if($jumlahTinggi <= $jumlahRendah){
-					$keputusan = 'Rendah';
+					$keputusan = 'Tidak';
 				}else{
-					$keputusan = 'Tinggi';
+					$keputusan = 'Ya';
 				}				
 				//insert atau lakukan pemangkasan cabang
 				pangkas($N_parent , $kasus , $keputusan);		
@@ -100,8 +99,8 @@
 				if($kondisi!=''){
 					$kondisi_ipk=$kondisi." AND ";
 				}
-				$jml_tinggi = jumlah_data("$kondisi_ipk ipk='Tinggi'");
-				$jml_rendah = jumlah_data("$kondisi_ipk ipk='Rendah'");
+				$jml_tinggi = jumlah_data("$kondisi_ipk terbaik='Ya'");
+				$jml_rendah = jumlah_data("$kondisi_ipk terbaik='Tidak'");
 				$jml_total = $jml_tinggi + $jml_rendah;
 				echo "Jumlah data = ".$jml_total."<br>";
 				echo "Jumlah tinggi = ".$jml_tinggi."<br>";

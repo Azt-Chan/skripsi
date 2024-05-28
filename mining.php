@@ -1,24 +1,9 @@
 <?php
 	include "koneksi.php";
+	include "fungsi.php";
+
 	$query=mysql_query("select * from data_training order by(id)");
 	$jumlah=mysql_num_rows($query);	
-	
-
-	// 0-25 : Cukup
-	// 26-50 : Baik
-	// 51-75 : Cukup baik
-	// 76-100 : Sangat baik
-	function getKeteragan($nilai){
-		if($nilai>=0 && $nilai<=25){
-			return "Cukup";
-		}else if($nilai>=26 && $nilai<=50){
-			return "Baik";
-		}else if($nilai>=51 && $nilai<=75){
-			return "Cukup Baik";
-		}else if($nilai>=76 && $nilai<=100){
-			return "Sangat Baik";
-		}
-	}
 
 	if($jumlah==0){
 		echo "<center><h3>Data training masih kosong...</h3></center>";

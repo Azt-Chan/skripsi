@@ -51,11 +51,11 @@
 		}
 		//untuk atribut 2 nilai atribut	
 		if($kondisi3==''){
-			$j_tinggi1 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi1");
-			$j_rendah1 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi1");
+			$j_tinggi1 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi1");
+			$j_rendah1 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi1");
 			$jml1 = $j_tinggi1 + $j_rendah1;
-			$j_tinggi2 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi2");
-			$j_rendah2 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi2");
+			$j_tinggi2 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi2");
+			$j_rendah2 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi2");
 			$jml2 = $j_tinggi2 + $j_rendah2;
 			//hitung entropy masing-masing kondisi
 			$jml_total = $jml1 + $jml2;
@@ -65,14 +65,14 @@
 		}
 		//untuk atribut 3 nilai atribut
 		else if($kondisi4==''){
-			$j_tinggi1 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi1");
-			$j_rendah1 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi1");
+			$j_tinggi1 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi1");
+			$j_rendah1 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi1");
 			$jml1 = $j_tinggi1 + $j_rendah1;
-			$j_tinggi2 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi2");
-			$j_rendah2 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi2");
+			$j_tinggi2 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi2");
+			$j_rendah2 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi2");
 			$jml2 = $j_tinggi2 + $j_rendah2;
-			$j_tinggi3 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi3");
-			$j_rendah3 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi3");
+			$j_tinggi3 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi3");
+			$j_rendah3 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi3");
 			$jml3 = $j_tinggi3 + $j_rendah3;
 			//hitung entropy masing-masing kondisi
 			$jml_total = $jml1 + $jml2 + $jml3;
@@ -84,17 +84,17 @@
 		}
 		//untuk atribut 4 nilai atribut
 		else if($kondisi5==''){
-			$j_tinggi1 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi1");
-			$j_rendah1 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi1");
+			$j_tinggi1 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi1");
+			$j_rendah1 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi1");
 			$jml1 = $j_tinggi1 + $j_rendah1;
-			$j_tinggi2 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi2");
-			$j_rendah2 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi2");
+			$j_tinggi2 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi2");
+			$j_rendah2 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi2");
 			$jml2 = $j_tinggi2 + $j_rendah2;
-			$j_tinggi3 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi3");
-			$j_rendah3 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi3");
+			$j_tinggi3 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi3");
+			$j_rendah3 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi3");
 			$jml3 = $j_tinggi3 + $j_rendah3;
-			$j_tinggi4 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi4");
-			$j_rendah4 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi4");
+			$j_tinggi4 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi4");
+			$j_rendah4 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi4");
 			$jml4 = $j_tinggi4 + $j_rendah4;
 			//hitung entropy masing-masing kondisi
 			$jml_total = $jml1 + $jml2 + $jml3+$jml4;
@@ -107,20 +107,20 @@
 		}
 		//untuk atribut 5 nilai atribut	
 		else{
-			$j_tinggi1 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi1");
-			$j_rendah1 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi1");
+			$j_tinggi1 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi1");
+			$j_rendah1 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi1");
 			$jml1 = $j_tinggi1 + $j_rendah1;
-			$j_tinggi2 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi2");
-			$j_rendah2 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi2");
+			$j_tinggi2 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi2");
+			$j_rendah2 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi2");
 			$jml2 = $j_tinggi2 + $j_rendah2;
-			$j_tinggi3 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi3");
-			$j_rendah3 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi3");
+			$j_tinggi3 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi3");
+			$j_rendah3 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi3");
 			$jml3 = $j_tinggi3 + $j_rendah3;
-			$j_tinggi4 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi4");
-			$j_rendah4 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi4");
+			$j_tinggi4 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi4");
+			$j_rendah4 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi4");
 			$jml4 = $j_tinggi4 + $j_rendah4;
-			$j_tinggi5 = jumlah_data("$data_kasus ipk='tinggi' AND $kondisi5");
-			$j_rendah5 = jumlah_data("$data_kasus ipk='rendah' AND $kondisi5");
+			$j_tinggi5 = jumlah_data("$data_kasus terbaik='Ya' AND $kondisi5");
+			$j_rendah5 = jumlah_data("$data_kasus terbaik='Tidak' AND $kondisi5");
 			$jml5 = $j_tinggi5 + $j_rendah5;
 			//hitung entropy masing-masing kondisi
 			$jml_total = $jml1 + $jml2 + $jml3 + $jml4 + $jml5;
@@ -356,5 +356,21 @@
 		$opsiMax[1] = $row[3];		
 		echo "<br>=========================<br>";
 		return $opsiMax;		
+	}
+
+	// 0-25 : Cukup
+	// 26-50 : Baik
+	// 51-75 : Cukup baik
+	// 76-100 : Sangat baik
+	function getKeteragan($nilai){
+		if($nilai>=0 && $nilai<=25){
+			return "Cukup";
+		}else if($nilai>=26 && $nilai<=50){
+			return "Baik";
+		}else if($nilai>=51 && $nilai<=75){
+			return "Cukup Baik";
+		}else if($nilai>=76 && $nilai<=100){
+			return "Sangat Baik";
+		}
 	}
 ?>

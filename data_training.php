@@ -1,5 +1,6 @@
 <?php
 	include "koneksi.php";
+	include "fungsi.php";
 	if(isset($_GET['act'])){
 		$action=$_GET['act'];
 		$id=$_GET['id'];
@@ -62,13 +63,13 @@
 			?>
 					<tr bgcolor=<?php echo $warna; ?> align='center'>
 						<td><?php echo $no;?></td>			
-						<td><?php echo $row['sains'];?></td>
-						<td><?php echo $row['math'];?></td>
-						<td><?php echo $row['bindo'];?></td>
-						<td><?php echo $row['bing'];?></td>
-						<td><?php echo $row['ips'];?></td>
-						<td><?php echo $row['aqidah'];?></td>
-						<td><?php echo $row['terbaik'];?></td>
+						<td><?php echo $row['sains'];?> (<?php echo getKeteragan($row['sains']);?>)</td>
+						<td><?php echo $row['math'];?> (<?php echo getKeteragan($row['math']);?>)</td>
+						<td><?php echo $row['bindo'];?>(<?php echo getKeteragan($row['bindo']);?>)</td>
+						<td><?php echo $row['bing'];?> (<?php echo getKeteragan($row['bing']);?>)</td>
+						<td><?php echo $row['ips'];?> (<?php echo getKeteragan($row['ips']);?>)</td>
+						<td><?php echo $row['aqidah'];?> (<?php echo getKeteragan($row['aqidah']);?>)</td>
+						<td><?php echo $row['terbaik'];?> <?php echo getKeteragan($row['terbaik']);?></td>
 						<td>
 							<a href="index.php?menu=data&act=update&id=<?php echo $row['id']; ?>">Update | </a>	
 							<a href="data_training.php?act=delete&id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?')">Delete</a>	

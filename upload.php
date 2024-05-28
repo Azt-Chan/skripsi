@@ -12,18 +12,19 @@
 		//nilai awal counter jumlah data yang sukses dan yang gagal diimport
 		$sukses = 0;
 		$gagal = 0;
+
 		//import data excel dari baris kedua, karena baris pertama adalah nama kolom
 		for ($i=2; $i<=$baris; $i++) {			
-			$instansi = $data->val($i,2);
-			$status = $data->val($i,3); 
-			$jurusan = $data->val($i,4);
-			$rataUN = $data->val($i,5);
-			$kerja = $data->val($i,6);
-			$motivasi = $data->val($i,7);
+			$sains = $data->val($i,2);
+			$math = $data->val($i,3); 
+			$bindo = $data->val($i,4);
+			$bing = $data->val($i,5);
+			$ips = $data->val($i,6);
+			$aqidah = $data->val($i,7);
 			$ipk = $data->val($i,8);
 			//setelah data dibaca, sisipkan ke dalam tabel 
-			$query = "INSERT INTO data_training (instansi,status,jurusan,rata_un,kerja,motivasi,ipk) 
-			VALUES ('$instansi','$status','$jurusan','$rataUN','$kerja','$motivasi','$ipk')";
+			$query = "INSERT INTO data_training (sains,math,bindo,bing,ips,aqidah,terbaik) 
+			VALUES ('$sains','$math','$bindo','$bing','$ips','$aqidah','$ipk')";
 			$hasil = mysql_query($query);
 			//menambah counter jika berhasil atau gagal
 			if($hasil) $sukses++;
