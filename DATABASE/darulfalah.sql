@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 23, 2024 at 07:57 AM
+-- Generation Time: May 28, 2024 at 12:53 PM
 -- Server version: 5.7.39
 -- PHP Version: 8.2.0
 
@@ -29,13 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `data_training` (
   `id` int(11) NOT NULL,
-  `instansi` varchar(10) DEFAULT NULL,
-  `status` varchar(10) DEFAULT NULL,
-  `jurusan` varchar(20) DEFAULT NULL,
-  `rata_un` double DEFAULT NULL,
-  `kerja` varchar(10) DEFAULT NULL,
-  `motivasi` varchar(20) DEFAULT NULL,
-  `ipk` decimal(10,0) DEFAULT NULL,
   `sains` decimal(10,0) NOT NULL COMMENT '81-90, 71-80, 61-70',
   `math` decimal(10,0) NOT NULL COMMENT '81-90, 71-80, 61-70',
   `bindo` decimal(10,0) NOT NULL COMMENT '81-90, 71-80, 61-70',
@@ -45,13 +38,6 @@ CREATE TABLE `data_training` (
   `nilai_akhir` decimal(10,0) DEFAULT NULL,
   `terbaik` varchar(10) NOT NULL COMMENT 'Ya / Tidak'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_training`
---
-
-INSERT INTO `data_training` (`id`, `instansi`, `status`, `jurusan`, `rata_un`, `kerja`, `motivasi`, `ipk`, `sains`, `math`, `bindo`, `bing`, `ips`, `aqidah`, `nilai_akhir`, `terbaik`) VALUES
-(12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '9', '9', '9', '9', '9', '9', NULL, 'Ya');
 
 -- --------------------------------------------------------
 
@@ -203,13 +189,6 @@ CREATE TABLE `pohon_keputusan` (
   `keputusan` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `pohon_keputusan`
---
-
-INSERT INTO `pohon_keputusan` (`id`, `parent`, `akar`, `keputusan`) VALUES
-(1, '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -313,7 +292,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data_training`
 --
 ALTER TABLE `data_training`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `data_uji`
@@ -337,7 +316,7 @@ ALTER TABLE `hasil_prediksi`
 -- AUTO_INCREMENT for table `pohon_keputusan`
 --
 ALTER TABLE `pohon_keputusan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rasio_gain`
