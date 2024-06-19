@@ -15,9 +15,9 @@
 		echo "<center><h3> Pohon keputusan belum terbentuk...</h3></center>";
 	}else{
 		if($_SESSION['lvl']=='0'){
-			echo "<center>
-					Klik 'Uji Rule' untuk menguji akurasi rule...<br>								
-				</center>";
+			// echo "<center>
+			// 		Klik 'Uji Rule' untuk menguji akurasi rule...<br>								
+			// 	</center>";
 		}
 		echo "Jumlah rule : ".$jumlah."<br>";
 		//hanya kaprodi yang bisa menghapus pohon keputusan dan menguji akurasi
@@ -25,8 +25,8 @@
 	?>				
 			<p>Opsi:  
 				<a href="?menu=tree&act=delete" onClick="return confirm('Anda yakin akan hapus pohon keputusan?')">Hapus Pohon Keputusan</a> | 
-				<a href="?menu=pohon_tree" >Lihat Pohon Keputusan</a> | 
-				<a href="?menu=uji_rule" >Uji Rule</a>
+				<a href="?menu=pohon_tree" >Lihat Pohon Keputusan</a> 
+				<!-- | <a href="?menu=uji_rule" >Uji Rule</a> -->
 			</p>
 		<?php
 		}else if($_SESSION['lvl']=='1'){

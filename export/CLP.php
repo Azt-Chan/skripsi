@@ -1,15 +1,15 @@
 <?php
 	include "../koneksi.php";
-	$query=mysql_query("SELECT a.nim,b.nama,b.jenis_kelamin,b.angkatan,b.kelas,a.hasil 
-							FROM hasil_prediksi a INNER JOIN mahasiswa b ON (a.nim=b.nim) 
-							ORDER BY(a.nim)");
+	$query=mysql_query("SELECT a.nis,b.nama,b.jenis_kelamin,b.angkatan,b.kelas,a.hasil 
+							FROM hasil_prediksi a INNER JOIN mahasiswa b ON (a.nis=b.nis) 
+							ORDER BY(a.nis)");
 	$jumlah=mysql_num_rows($query);	
 	
-	$conten = "<center><h1>Laporan Hasil Prediksi Prestasi Akademik Mahasiswa</h1></center><br><br>Jumlah data : ".$jumlah."
+	$conten = "<center><h1>Laporan Hasil Prediksi Siswa Terbaik</h1></center><br><br>Jumlah data : ".$jumlah."
 	<table bgcolor='#7c96ba' border='1' cellspacing='0' cellspading='0' align='center' width=600>";
 	$conten .="
 		<tr align='center'>
-			<th>No</th><th>NIM</th><th>Nama</th><th>Jenis Kelamin</th><th>Angkatan</th><th>Kelas</th><th>Hasil Prediksi</th>
+			<th>No</th><th>nis</th><th>Nama</th><th>Jenis Kelamin</th><th>Angkatan</th><th>Kelas</th><th>Hasil Prediksi</th>
 		</tr>";
 	
 		$warna1 = '#ffffff';
@@ -73,9 +73,9 @@ elseif($_GET['format']=='2'){
 	$pdf->Output('laporan_Hasil_Prediksi.pdf', 'I');*/
 	require('fpdf16/fpdf.php');
      
-    $sql_que ="SELECT a.nim,b.nama,b.jenis_kelamin,b.angkatan,b.kelas,a.hasil 
-							FROM hasil_prediksi a INNER JOIN mahasiswa b ON (a.nim=b.nim) 
-							ORDER BY(a.nim)";
+    $sql_que ="SELECT a.nis,b.nama,b.jenis_kelamin,b.angkatan,b.kelas,a.hasil 
+							FROM hasil_prediksi a INNER JOIN mahasiswa b ON (a.nis=b.nis) 
+							ORDER BY(a.nis)";
     $db_query = mysql_query($sql_que) or die("Query gagal");
     //Variabel untuk iterasi
     $i = 0;
@@ -103,7 +103,7 @@ elseif($_GET['format']=='2'){
             //untuk warna text
             $this->SetTextColor(0,0,0);
             //Menampilkan tulisan di halaman
-            $this->Cell(25,1,'Laporan Hasil Prediksi Prestasi Akademik Mahasiswa','',0,'C',1); //TBLR (untuk garis)=> B = Bottom,
+            $this->Cell(25,1,'Laporan Hasil Prediksi Siswa Terbaik','',0,'C',1); //TBLR (untuk garis)=> B = Bottom,
             // L = Left, R = Right
             //untuk garis, C = center
         }
@@ -116,7 +116,7 @@ elseif($_GET['format']=='2'){
     $pdf->Ln();$pdf->Ln();
     $pdf->SetFont('Times','B',12);
     $pdf->Cell(1,1,'No','LRTB',0,'C');
-    $pdf->Cell(2,1,'NIM','LRTB',0,'C');
+    $pdf->Cell(2,1,'nis','LRTB',0,'C');
     $pdf->Cell(8,1,'Nama','LRTB',0,'C');
     $pdf->Cell(2,1,'Jenis Kelamin','LRTB',0,'C');
     $pdf->Cell(3,1,'Angkatan','LRTB',0,'C');

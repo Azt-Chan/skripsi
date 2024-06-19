@@ -1,5 +1,6 @@
 <?php
 include "koneksi.php";
+include "fungsi.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (!isset($_SESSION['usr'])){
 	header("location:login.php");
@@ -12,28 +13,29 @@ if($jml_tree==0){
 	echo "<center><h3>Anda tidak bisa melakukan prediksi,<br>
 			Karena Pohon Keputusan belum terbentuk...</h3></center>";
 }else{
-	$nim=$_SESSION['usr'];
-	$query=mysql_query("SELECT * FROM hasil_prediksi WHERE nim='$nim'");
+	$nis=$_SESSION['usr'];
+	$query=mysql_query("SELECT * FROM hasil_prediksi WHERE nis='$nis'");
 	$baris=mysql_fetch_array($query);
 	$jmlque=mysql_num_rows($query);
 	if($jmlque==1){
 		echo "<center><h1>Anda sudah melakukan prediksi..<br></h1>
 			<strong>Jawaban Anda sebelumnya:<br>
-			Instansi = ".$baris['instansi']."<br>
-			Status = ".$baris['status']."<br>
-			Jurusan = ".$baris['jurusan']."<br>
-			Rata UN = ".$baris['rata_un']."<br> 
-			Status kerja = ".$baris['kerja']."<br>
-			Motivasi = ".$baris['motivasi']."</strong><br> 
-			<h1>Prediksi prestasi Anda adalah ".$baris['hasil']."</h1></center>";	
+			Sains = $baris[sains] ($baris[sains_keterangan])<br>
+			Math = $baris[math] ($baris[math_keterangan])<br>
+			Bahasa Indo = $baris[bindo] ($baris[bindo_keterangan])<br>
+			Bahasa Inggris = $baris[bing] ($baris[bing_keterangan])<br> 
+			Ips = $baris[ips] ($baris[ips_keterangan])<br>
+			Aqidah = $baris[aqidah] ($baris[aqidah_keterangan]) </strong><br> 
+			<h1>Prediksi menjadi siswa terbaik adalah ".$baris['hasil']."</h1></center>";	
 		
 		//menyajikan rule
-		$n_instansi = $baris['instansi'];
-		$n_status = $baris['status'];
-		$n_jurusan = $baris['jurusan'];
-		$n_rataUN = $baris['rata_un'];
-		$n_kerja = $baris['kerja'];
-		$n_motivasi = $baris['motivasi'];
+		$n_sains = $baris['sains_keterangan'];
+		$n_math = $baris['math_keterangan'];
+		$n_bindo = $baris['bindo_keterangan'];
+		$n_bing = $baris['bing_keterangan'];
+		$n_ips = $baris['ips_keterangan'];
+		$n_aqidah = $baris['aqidah_keterangan'];
+		
 		$sql=mysql_query("SELECT * FROM pohon_keputusan");	
 		$id_rule="";
 		$keputusan="";
@@ -49,17 +51,14 @@ if($jml_tree==0){
 			$rule=str_replace("="," s ",$rule);
 			$rule=str_replace(">"," l ",$rule);		
 			//mengganti nilai
-			$rule=str_replace("instansi","'$n_instansi'",$rule);
-			$rule=str_replace("status","'$n_status'",$rule);
-			$rule=str_replace("jurusan","'$n_jurusan'",$rule);
-			$rule=str_replace("rata_un","$n_rataUN",$rule);
-			$rule=str_replace("kerja","'$n_kerja'",$rule);
-			$rule=str_replace("motivasi","'$n_motivasi'",$rule);		
+			$rule=str_replace("sains_keterangan","'$n_sains'",$rule);
+			$rule=str_replace("math_keterangan","'$n_math'",$rule);
+			$rule=str_replace("bindo_keterangan","'$n_bindo'",$rule);
+			$rule=str_replace("bing_keterangan","$n_bing",$rule);
+			$rule=str_replace("ips_keterangan","'$n_ips'",$rule);
+			$rule=str_replace("aqidah_keterangan","'$n_aqidah'",$rule);		
 			//menghilangkan '
 			$rule=str_replace("'","",$rule);
-			//menggabungkan kata ortu dan orang lain
-			$rule=str_replace("Orang Tua","OrangTua",$rule);
-			$rule=str_replace("Orang Lain","OrangLain",$rule);
 			//explode and
 			$explodeAND = explode(" AND ",$rule);
 			$jmlAND = count($explodeAND);				
@@ -146,7 +145,7 @@ if($jml_tree==0){
 			$rule_terpilih = "IF ".$row_bar[1]." AND ".$row_bar[2]." THEN prestasi = ".$row_bar[3];
 			echo "<h4><center>Rule yang terpilih adalah rule ke-".$row_bar[0]."<br>".$rule_terpilih."</center></h4>";						
 		}
-		echo "<center><a href='delete_prediksi.php?id=$nim' accesskey='5' title='ubah jawaban' onClick=\"return confirm('Anda yakin akan mengedit data?')\">Klik disini untuk kembali lakukan prediksi</a></center>";	
+		echo "<center><a href='delete_prediksi.php?id=$nis' accesskey='5' title='ubah jawaban' onClick=\"return confirm('Anda yakin akan mengedit data?')\">Klik disini untuk kembali lakukan prediksi</a></center>";	
 	}
 	//jika belum melakukan prediksi
 	else if($jmlque==0){
@@ -158,52 +157,49 @@ if($jml_tree==0){
 				<tr>
 					<td colspan=2></td>
 				</tr>		
+
 				<tr>
-					<td colspan=3>1. Apa instansi sekolahan asal Anda?</td>  
-				</tr>
-				<tr>			
-					<td> &nbsp;&nbsp;<input type='radio' name='instansi' value='SMA' required="required">SMA </td>
-					<td> <input type='radio' name='instansi' value='SMK' >SMK </td>
-					<td> <input type='radio' name='instansi' value='MA' >MA 	</td>						
+					<td colspan=3>1. Berapa nilai sains?</td>        
 				</tr>
 				<tr>
-					<td colspan=3>2. Apa status sekolahan asal Anda?</td>
-				</tr>
-				<tr>			
-					<td> &nbsp;&nbsp;<input type='radio' name='status' value='Negeri' required="required">Negeri </td>
-					<td> <input type='radio' name='status' value='Swasta'>Swasta </td>
+					<td> &nbsp;&nbsp;<input name='sains' type='text' style="width:50px;" required="required"> </td>
+				</tr>	
+
+				<tr>
+					<td colspan=3>2. Berapa nilai math?</td>        
 				</tr>
 				<tr>
-					<td colspan = 3>3. Apa jurusan Anda ketika SMA?</td>        
+					<td> &nbsp;&nbsp;<input name='math' type='text' style="width:50px;" required="required"> </td>
+				</tr>
+					
+				<tr>
+					<td colspan=3>3. Berapa nilai bahasa indonesia?</td>        
 				</tr>
 				<tr>
-					<td> &nbsp;&nbsp;<input type='radio' name='jurusan' value='IPA' required="required">IPA </td>
-					<td> <input type='radio' name='jurusan' value='IPS'>IPS </td>
-					<td> <input type='radio' name='jurusan' value='Bahasa'>Bahasa </td>
-					<td> <input type='radio' name='jurusan' value='Teknik'>Teknik </td>
-					<td> <input type='radio' name='jurusan' value='Administrasi'>Administrasi </td>
+					<td> &nbsp;&nbsp;<input name='bindo' type='text' style="width:50px;" required="required"> </td>
+				</tr>
+
+				<tr>
+					<td colspan=3>4. Berapa nilai bahasa inggris?</td>        
 				</tr>
 				<tr>
-					<td colspan=3>4. Berapa nilai Rata UN Anda ketika SMA?</td>        
+					<td> &nbsp;&nbsp;<input name='bing' type='text' style="width:50px;" required="required"> </td>
+				</tr>
+
+				<tr>
+					<td colspan=3>5. Berapa nilai ips?</td>        
 				</tr>
 				<tr>
-					<td> &nbsp;&nbsp;<input name='rataUN' type='text' style="width:50px;" required="required"> </td>
-				</tr>		
-				<tr>
-					<td colspan=3>5. Apa status kerja Anda?</td>
+					<td> &nbsp;&nbsp;<input name='ips' type='text' style="width:50px;" required="required"> </td>
 				</tr>
-				<tr>			
-					<td> &nbsp;&nbsp;<input type='radio' name='kerja' value='Sudah' required="required">Sudah </td>
-					<td> <input type='radio' name='kerja' value='Belum'>Belum </td>
+
+				<tr>
+					<td colspan=3>5. Berapa nilai aqidah?</td>        
 				</tr>
 				<tr>
-					<td colspan=4>6. Siapa yang memotivasi Anda untuk memilih kuliah?</td>        
-				</tr>
-				<tr>			
-					<td> &nbsp;&nbsp;<input type='radio' name='motivasi' value='Sendiri' required="required">Sendiri </td>
-					<td> <input type='radio' name='motivasi' value='OrangTua'>Orang tua </td>
-					<td> <input type='radio' name='motivasi' value='OrangLain'>Orang lain </td>
-				</tr>		
+					<td> &nbsp;&nbsp;<input name='aqidah' type='text' style="width:50px;" required="required"> </td>
+				</tr>	
+
 				<tr>
 					<td colspan=2>
 						<input type=submit name=submit value=Submit >
@@ -215,19 +211,20 @@ if($jml_tree==0){
 
 		<?php
 		}else{
-			$n_instansi = $_POST['instansi'];
-			$n_status = $_POST['status'];
-			$n_jurusan = $_POST['jurusan'];
-			$n_rataUN = $_POST['rataUN'];
-			$n_kerja = $_POST['kerja'];
-			$n_motivasi = $_POST['motivasi'];
+			$n_sains = $_POST['sains'];
+			$n_math = $_POST['math'];
+			$n_bindo = $_POST['bindo'];
+			$n_bing = $_POST['bing'];
+			$n_ips = $_POST['ips'];
+			$n_aqidah = $_POST['aqidah'];
+
 			echo "<h4><center>Hasil Jawaban Anda...<br>";
-			echo "Instansi: ".$n_instansi."<br>";
-			echo "Status: ".$n_status."<br>";
-			echo "Jurusan: ".$n_jurusan."<br>";
-			echo "Rata UN: ".$n_rataUN."<br>";
-			echo "Kerja: ".$n_kerja."<br>";
-			echo "Motivasi: ".$n_motivasi."<br><br><br></center></h4>";	
+			echo "Nilai sains: ".$n_sains."<br>";
+			echo "Nilai math: ".$n_math."<br>";
+			echo "Nilai bahasa indonesia: ".$n_bindo."<br>";
+			echo "Nilai Bahasa inggris: ".$n_bing."<br>";
+			echo "Nilai ips: ".$n_ips."<br>";
+			echo "Nilai aqidah: ".$n_aqidah."<br><br><br><br></center></h4>";	
 					
 			$sql=mysql_query("SELECT * FROM pohon_keputusan");	
 			$id_rule="";
@@ -239,22 +236,20 @@ if($jml_tree==0){
 				}else{
 					$rule=$row[2];
 				}
+			
 				//mengubah parameter
 				$rule=str_replace("<="," k ",$rule);
 				$rule=str_replace("="," s ",$rule);
 				$rule=str_replace(">"," l ",$rule);		
 				//mengganti nilai
-				$rule=str_replace("instansi","'$n_instansi'",$rule);
-				$rule=str_replace("status","'$n_status'",$rule);
-				$rule=str_replace("jurusan","'$n_jurusan'",$rule);
-				$rule=str_replace("rata_un","$n_rataUN",$rule);
-				$rule=str_replace("kerja","'$n_kerja'",$rule);
-				$rule=str_replace("motivasi","'$n_motivasi'",$rule);		
+				$rule=str_replace("sains_keterangan","'".getKeterangan($n_sains)."'",$rule);
+				$rule=str_replace("math_keterangan","'".getKeterangan($n_math)."'",$rule);
+				$rule=str_replace("bindo_keterangan","'".getKeterangan($n_bindo)."'",$rule);
+				$rule=str_replace("bing_keterangan","".getKeterangan($n_bing)."",$rule);
+				$rule=str_replace("ips_keterangan","'".getKeterangan($n_ips)."'",$rule);
+				$rule=str_replace("aqidah_keterangan","'".getKeterangan($n_aqidah)."'",$rule);		
 				//menghilangkan '
 				$rule=str_replace("'","",$rule);
-				//menggabungkan kata ortu dan orang lain
-				$rule=str_replace("Orang Tua","OrangTua",$rule);
-				$rule=str_replace("Orang Lain","OrangLain",$rule);
 				//explode and
 				$explodeAND = explode(" AND ",$rule);
 				$jmlAND = count($explodeAND);				
@@ -354,18 +349,18 @@ if($jml_tree==0){
 						$id_rule=$bar_row['id'];
 					}
 				}			
-				echo "<h1><center>Anda diprediksi memiliki prestasi ".$keputusan."</center></h1>";			
+				echo "<h1><center>Anda diprediksi memiliki  prestasi".$keputusan."</center></h1>";			
 				echo "<h4><center>Rule terpilih adalah rule yang terakhir karena tidak memenuhi semua rule</center></h4>";	
-				mysql_query("INSERT INTO hasil_prediksi (nim,instansi,status,jurusan,rata_un,kerja,motivasi,hasil) VALUES 
-				('$nim','$n_instansi','$n_status','$n_jurusan','$n_rataUN','$n_kerja','$n_motivasi','$keputusan')");
+				mysql_query("INSERT INTO hasil_prediksi (nis,sains,math,bindo,bing,ips,aqidah,  sains_keterangan,math_keterangan,bindo_keterangan,bing_keterangan,ips_keterangan,aqidah_keterangan,hasil) VALUES 
+				('$nis','$n_sains','$n_math','$n_bindo','$n_bing','$n_ips','$n_aqidah','".getKeterangan($n_sains)."','".getKeterangan($n_math)."','".getKeterangan($n_bindo)."','".getKeterangan($n_bing)."','".getKeterangan($n_ips)."','".getKeterangan($n_aqidah)."','$keputusan')");
 			}else{
-				echo "<h1><center>Anda diprediksi memiliki prestasi ".$keputusan."</center></h1>";
+				echo "<h1><center>Anda diprediksi memiliki menjadi siswa terbaik ".$keputusan."</center></h1>";
 				$sql_que=mysql_query("SELECT * FROM pohon_keputusan WHERE id=$id_rule");			
 				$row_bar=mysql_fetch_array($sql_que);
 				$rule_terpilih = "IF ".$row_bar[1]." AND ".$row_bar[2]." THEN prestasi = ".$row_bar[3];
 				echo "<h4><center>Rule yang terpilih adalah rule ke-".$row_bar[0]."<br>".$rule_terpilih."</center></h4>";	
-				mysql_query("INSERT INTO hasil_prediksi (nim,instansi,status,jurusan,rata_un,kerja,motivasi,hasil) VALUES 
-				('$nim','$n_instansi','$n_status','$n_jurusan','$n_rataUN','$n_kerja','$n_motivasi','$keputusan')");				
+				mysql_query("INSERT INTO hasil_prediksi (nis,sains,math,bindo,bing,ips,aqidah,  sains_keterangan,math_keterangan,bindo_keterangan,bing_keterangan,ips_keterangan,aqidah_keterangan,hasil) VALUES 
+				('$nis','$n_sains','$n_math','$n_bindo','$n_bing','$n_ips','$n_aqidah','".getKeterangan($n_sains)."','".getKeterangan($n_math)."','".getKeterangan($n_bindo)."','".getKeterangan($n_bing)."','".getKeterangan($n_ips)."','".getKeterangan($n_aqidah)."','$keputusan')");				
 			}		
 		}
 	}

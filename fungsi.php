@@ -362,7 +362,7 @@
 	// 26-50 : Baik
 	// 51-75 : Cukup baik
 	// 76-100 : Sangat baik
-	function getKeteragan($nilai){
+	function getKeterangan($nilai){
 		if($nilai>=0 && $nilai<=25){
 			return "Cukup";
 		}else if($nilai>=26 && $nilai<=50){

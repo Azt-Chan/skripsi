@@ -6,7 +6,7 @@
 		//delete data user
 		if($action=='delete'){
 			mysql_query("DELETE FROM user WHERE user_id = '$id'");
-			mysql_query("DELETE FROM mahasiswa WHERE nim = '$id'");
+			mysql_query("DELETE FROM mahasiswa WHERE nis = '$id'");
 			header('location:index.php?menu=user');
 		}
 		//delete semua data
@@ -17,18 +17,12 @@
 		}		
 	}else{
 		include "form_data_user.php";
-		$query=mysql_query("select * from mahasiswa ORDER BY(nim)");
+		$query=mysql_query("select * from mahasiswa ORDER BY(nis)");
 		$jumlah=mysql_num_rows($query);	
 		echo "<br><br>";
 	?>
 		<br>
-		<p>
-			<form method="post" enctype="multipart/form-data" action="upload.php?data=user">
-				Opsi: <a href="index.php?menu=user&act=delete_all" onClick="return confirm('Anda yakin akan hapus semua data user?')">Hapus Semua Data</a> | 
-				Import data excel: <input name="userfile" type="file"> 
-				<input name="upload" type="submit" value="import">*format sama dengan tabel tanpa no dan status prediksi
-			</form>
-		</p>	
+		
 	<?php		
 		
 		if($jumlah==0){
@@ -41,9 +35,9 @@
 					<th>No</th>
 					<th>NIS</th>
 					<th>Nama</th>
-					<th>Jenis Kelamin</th>
-					<th>Angkatan</th>
 					<th>Kelas</th>
+					<th>Angkatan</th>
+					<th>Jenis Kelamin</th>
 					<th>Status Prediksi</th>
 					<th>Action</th>
 				</tr>
@@ -54,7 +48,7 @@
 				$no=1; 
 				while($row=mysql_fetch_array($query)){
 					$nis=$row['nis'];
-					$que=mysql_query("SELECT * FROM hasil_prediksi WHERE nim = '$nis'");
+					$que=mysql_query("SELECT * FROM hasil_prediksi WHERE nis = '$nis'");
 					$statusPrediksi="";
 					//jika mahasiswa sudah melakukan prediksi
 					if (mysql_num_rows($que) == 1) {

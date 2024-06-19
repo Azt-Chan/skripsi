@@ -24,7 +24,7 @@
 			<img src="images/logo.png"/>
 		</div>
 		<div id="logo-name">
-			<h1><a href="index.php">SISTEM PREDIKSI PRESTASI AKADEMIK MAHASISWA</a></h1>
+			<h1><a href="index.php">SISTEM PREDIKSI SISWA TERBAIK</a></h1>
 		</div>				
 	</div>	
 	<div id="menu">
@@ -67,9 +67,9 @@
 							if($kode=='home'){
 								echo "<center><strong>
 									
-									<h2>SISTEM PREDIKSI PRESTASI AKADEMIK MAHASISWA MENGGUNAKAN METODE DECISION TREE C4.5</h2><br/>
-									<img src='images/university.png' width='350' height='auto'/><br>									
-									Aplikasi ini akan menghasilkan informasi perkiraan prestasi akademik mahasiswa baru dari data training yang digunakan adalah data nilai UN, Jurusan, Status pekerjaan, Motivasi dan Prestasi sekolah.
+									<h2>SISTEM PREDIKSI SISWA TERBAIK MENGGUNAKAN METODE DECISION TREE C4.5</h2><br/>
+									<img src='images/siswa.png' width='350' height='auto'/><br>									
+									Aplikasi ini akan menghasilkan perkiraan prediksi siswa terbaik dari data training yang di gunakan adalah data nilai Sains,Matematika,Bahasa Indonesia,Bahasa Inggris,Ips dan Aqidah Akhlak.
 									<br>
 									Hasil analisa dikelompokkan menjasi kelas tinggi (predikasi berprestasi tinggi) dan kelas rendah (predikasi berprestasi rendah).
 									</strong></center>";
@@ -116,11 +116,11 @@
 							echo "<strong><center>BERANDA</center></strong><br><br>";
 							echo "<center><strong>
 									
-									<h2>SISTEM PREDIKSI PRESTASI AKADEMIK MAHASISWA MENGGUNAKAN METODE DECISION TREE C4.5</h2><br/>
-									<img src='images/university.png' width='350' height='auto'/><br>									
-									Aplikasi ini akan menghasilkan informasi perkiraan prestasi akademik mahasiswa baru dari data training yang digunakan adalah data nilai UN, Jurusan, Status pekerjaan, Motivasi dan Prestasi sekolah.
+									<h2>SISTEM PREDIKSI SISWA TERBAIK MENGGUNAKAN METODE DECISION TREE C4.5</h2><br/>
+									<img src='images/siswa.png' width='350' height='auto'/><br>									
+									Aplikasi ini akan menghasilkan perkiraan prediksi siswa terbaik dari data training yang di gunakan adalah data nilai Sains,Matematika,Bahasa Indonesia,Bahasa Inggris,Ips dan Aqidah Akhlak.
 									<br>
-									Hasil analisa dikelompokkan menjasi kelas tinggi (predikasi berprestasi tinggi) dan kelas rendah (predikasi berprestasi rendah).
+									Hasil analisa dikelompokkan menjadi kelas tinggi (predikasi berprestasi tinggi) dan kelas rendah (predikasi berprestasi rendah).
 									</strong></center>";
 						}
 						?>						
@@ -130,7 +130,7 @@
 		</div>
 	
 		<div id="footer">
-			<p>Decision Tree C4.5 &copy;2020 <a href="http://www.mycoding.net">My Coding</a></p>
+			<!-- <p>Decision Tree C4.5 &copy;2020 <a href="http://www.mycoding.net">My Coding</a></p> -->
 		</div>
 	</div>
 </body>

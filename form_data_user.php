@@ -1,7 +1,7 @@
 <form method=POST action='' >
 	<table align='center' >
 		<tr>
-			<td colspan=2><b><center>Tambah Data Mahasiswa</center></b></td>
+			<td colspan=2><b><center>Tambah Data Siswa</center></b></td>
 		</tr>
 		<tr>
 			<td>NIS</td>        
@@ -56,6 +56,8 @@ if (isset($_POST['submit'])) {
 	$jk = $_POST['jenisKelamin'];
 	$angkatan = $_POST['angkatan'];
 	$kelas = $_POST['kelas'];
+
+	
     mysql_query("INSERT INTO mahasiswa 				
 				VALUES(
 					'$nis',
@@ -68,8 +70,13 @@ if (isset($_POST['submit'])) {
 				VALUES(
 					'$nis',
 					'$nama',
-					'$nim',
+					'$nis',
 					'1'										
 				)");
+
+	// if(!$result) {
+	// 	die("Database query failed: " . mysql_error());
+	// } 
+
 }
 ?>

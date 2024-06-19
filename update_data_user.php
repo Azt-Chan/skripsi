@@ -1,7 +1,7 @@
 <?php
 $sql = mysql_query("SELECT * FROM mahasiswa WHERE id='$_GET[id]'");
 $row = mysql_fetch_array($sql);	
-$nim=$row[0];
+$nis=$row[0];
 $nama=$row[1];
 $jk=$row[2];
 $angkatan=$row[3];
@@ -23,10 +23,10 @@ if (isset($_POST['submit'])) {
 <form method=POST action='' >
 	<table align='center' >
 		<tr>
-			<td colspan=2><b><center>Edit Data User Mahasiswa</center></b></td>
+			<td colspan=2><b><center>Edit Data User Siswa</center></b></td>
 		</tr>
 		<tr>
-			<td>NIM</td>        
+			<td>nis</td>        
 			<td>: </td>
 			<td>	<input type='radio' name='instansi' value='SMA' <?php if($instansi=='SMA'){ echo 'checked'; } ?> >SMA </td>			
 		</tr>

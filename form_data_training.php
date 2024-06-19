@@ -76,7 +76,7 @@
 			<td><b>Terbaik</b></td>        
 			<td><b>: </b></td>
 			<td><b>	<input type='radio' name='terbaik' value='Ya' required="required">Ya </b></td>
-			<td><b>	<input type='radio' name='terbaik' value='Ya'>Tidak </b></td>
+			<td><b>	<input type='radio' name='terbaik' value='Tidak'>Tidak </b></td>
 		</tr>		
 		<tr>
 			<td colspan=2>
@@ -88,8 +88,16 @@
 </form>
 <?php
 if (isset($_POST['submit'])) {
+	$sains_keterangan = getKeterangan($_POST['sains']);
+	$math_keterangan = getKeterangan($_POST['math']);
+	$bindo_keterangan = getKeterangan($_POST['bindo']);
+	$bing_keterangan = getKeterangan($_POST['bing']);
+	$ips_keterangan = getKeterangan($_POST['ips']);
+	$aqidah_keterangan = getKeterangan($_POST['aqidah']);
+
 	$result = mysql_query("INSERT INTO data_training 
-				(sains,math,bindo,bing,ips,aqidah,terbaik)
+				(sains,math,bindo,bing,ips,aqidah,terbaik,
+				sains_keterangan,math_keterangan,bindo_keterangan,bing_keterangan,ips_keterangan,aqidah_keterangan)
 				VALUES(
 					'$_POST[sains]',
 					'$_POST[math]',
@@ -97,8 +105,15 @@ if (isset($_POST['submit'])) {
 					'$_POST[bing]',
 					'$_POST[ips]',
 					'$_POST[aqidah]',
-					'$_POST[terbaik]'
+					'$_POST[terbaik]',
+					'$sains_keterangan',
+					'$math_keterangan',
+					'$bindo_keterangan',
+					'$bing_keterangan',
+					'$ips_keterangan',
+					'$aqidah_keterangan'
 				)");
+
 
 	if(!$result) {
 		die("Database query failed: " . mysql_error());

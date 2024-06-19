@@ -8,9 +8,9 @@
 			header('location:index.php?menu=hasil');
 		}
 	}else{
-		$query=mysql_query("SELECT a.nim,b.nama,b.jenis_kelamin,b.angkatan,b.kelas,a.hasil 
-								FROM hasil_prediksi a INNER JOIN mahasiswa b ON (a.nim=b.nim) 
-								ORDER BY(a.nim)");
+		$query=mysql_query("SELECT a.nis,b.nama,b.jenis_kelamin,b.angkatan,b.kelas,a.hasil 
+								FROM hasil_prediksi a INNER JOIN mahasiswa b ON (a.nis=b.nis) 
+								ORDER BY(a.nis)");
 		$jumlah=mysql_num_rows($query);	
 		//jika hasil_prediksi kosong
 		if($jumlah==0){
@@ -28,7 +28,7 @@
 			
 			<table bgcolor='#7c96ba' border='1' cellspacing='0' cellspading='0' align='center' width=900>
 				<tr align='center'>
-					<th>No</th><th>NIM</th><th>Nama</th><th>Jenis Kelamin</th><th>Angkatan</th><th>Kelas</th><th>Hasil Prediksi</th>
+					<th>No</th><th>nis</th><th>Nama</th><th>Jenis Kelamin</th><th>Angkatan</th><th>Kelas</th><th>Hasil Prediksi</th>
 				</tr>
 			<?php
 				$warna1 = '#ffffff';

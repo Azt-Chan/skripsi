@@ -65,7 +65,7 @@
 		}		
 		echo $kondisi."<br>";
 		//cek data heterogen / homogen???
-		$cek = cek_heterohomogen('terbaik',$kondisi);		
+		$cek = cek_heterohomogen('terbaik',$kondisi);
 		if($cek=='homogen'){
 			echo "<br>LEAF ";
 			$sql_keputusan = mysql_query("SELECT DISTINCT(terbaik) FROM data_training WHERE $kondisi");
@@ -77,7 +77,7 @@
 		}//jika data masih heterogen
 		else if($cek=='heterogen'){
 			//cek jumlah data
-			$jumlah = jumlah_data($kondisi);				
+			$jumlah = jumlah_data($kondisi);
 			if($jumlah<8){
 				echo "<br>LEAF ";
 				$Ntinggi = $kondisi." AND terbaik='Ya'";
@@ -109,100 +109,144 @@
 				//hitung entropy semua
 				$entropy_all = hitung_entropy($jml_tinggi , $jml_rendah);
 				echo "Entropy = ".$entropy_all."<br>";
-				
+								
 				//cek berapa nilai setiap atribut
-				$nilai_instansi = array();
-				$nilai_instansi = cek_nilaiAtribut('instansi',$kondisi);								
-				$jmlInstansi = count($nilai_instansi);								
-				$nilai_status = array();
-				$nilai_status = cek_nilaiAtribut('status',$kondisi);								
-				$jmlStatus = count($nilai_status);
-				$nilai_jurusan = array();
-				$nilai_jurusan = cek_nilaiAtribut('jurusan',$kondisi);								
-				$jmlJurusan = count($nilai_jurusan);
-				$nilai_kerja = array();
-				$nilai_kerja = cek_nilaiAtribut('kerja',$kondisi);								
-				$jmlKerja = count($nilai_kerja);
-				$nilai_motivasi = array();
-				$nilai_motivasi = cek_nilaiAtribut('motivasi',$kondisi);								
-				$jmlMotivasi = count($nilai_motivasi);				
-							
-			//hitung gain atribut
+				$nilai_sains = array();
+				$nilai_sains = cek_nilaiAtribut('sains_keterangan',$kondisi);								
+				$jml_sains = count($nilai_sains);								
+				$nilai_math = array();
+				$nilai_math = cek_nilaiAtribut('math_keterangan',$kondisi);								
+				$jml_math = count($nilai_math);
+				$nilai_bindo = array();
+				$nilai_bindo = cek_nilaiAtribut('bindo_keterangan',$kondisi);								
+				$jml_bindo = count($nilai_bindo);
+				$nilai_bing = array();
+				$nilai_bing = cek_nilaiAtribut('bing_keterangan',$kondisi);								
+				$jml_bing = count($nilai_bing);
+				$nilai_ips = array();
+				$nilai_ips = cek_nilaiAtribut('ips_keterangan',$kondisi);								
+				$jml_ips = count($nilai_ips);				
+				$nilai_aqidah = array();
+				$nilai_aqidah = cek_nilaiAtribut('aqidah_keterangan',$kondisi);								
+				$jml_aqidah = count($nilai_aqidah);				
+
+				//hitung gain atribut
 				mysql_query("TRUNCATE gain");
-				//instansi
-				if($jmlInstansi!=1){
-					$NA1Instansi="instansi='$nilai_instansi[0]'";
-					$NA2Instansi="";
-					$NA3Instansi="";
-					if($jmlInstansi==2){
-						$NA2Instansi="instansi='$nilai_instansi[1]'";
-					}else if ($jmlInstansi==3){
-						$NA2Instansi="instansi='$nilai_instansi[1]'";
-						$NA3Instansi="instansi='$nilai_instansi[2]'";
-					}				
-					hitung_gain($kondisi , "instansi"	, $entropy_all , $NA1Instansi, $NA2Instansi, $NA3Instansi, "" , "");	
-				}
-				//status
-				if($jmlStatus!=1){
-					$NA1Status="status='$nilai_status[0]'";
-					$NA2Status="status='$nilai_status[1]'";
-					hitung_gain($kondisi , "status" , $entropy_all , $NA1Status , $NA2Status , "" , "" , "");
-				}
-				//jurusan
-				if($jmlJurusan!=1){
-					$NA1Jurusan="jurusan='$nilai_jurusan[0]'";
-					$NA2Jurusan="";
-					$NA3Jurusan="";
-					$NA4Jurusan="";
-					$NA5Jurusan="";
-					if($jmlJurusan==2){
-						$NA2Jurusan="jurusan='$nilai_jurusan[1]'";
-					}else if($jmlJurusan==3){
-						$NA2Jurusan="jurusan='$nilai_jurusan[1]'";
-						$NA3Jurusan="jurusan='$nilai_jurusan[2]'";
-					}else if($jmlJurusan==4){
-						$NA2Jurusan="jurusan='$nilai_jurusan[1]'";
-						$NA3Jurusan="jurusan='$nilai_jurusan[2]'";
-						$NA4Jurusan="jurusan='$nilai_jurusan[3]'";
-					}else if($jmlJurusan==5){
-						$NA2Jurusan="jurusan='$nilai_jurusan[1]'";
-						$NA3Jurusan="jurusan='$nilai_jurusan[2]'";
-						$NA4Jurusan="jurusan='$nilai_jurusan[3]'";
-						$NA5Jurusan="jurusan='$nilai_jurusan[4]'";
+				//sains
+				if($jml_sains!=1){
+					$NA1Sains="sains_keterangan='$nilai_sains[0]'";
+					$NA2Sains="";
+					$NA3Sains="";
+					$NA4Sains="";
+					$NA5Sains="";
+					if($jml_sains==2){
+						$NA2Sains="sains_keterangan='$nilai_sains[1]'";
+					}else if($jml_sains==3){
+						$NA2Sains="sains_keterangan='$nilai_sains[1]'";
+						$NA3Sains="sains_keterangan='$nilai_sains[2]'";
+					}else if($jml_sains==4){
+						$NA2Sains="sains_keterangan='$nilai_sains[1]'";
+						$NA3Sains="sains_keterangan='$nilai_sains[2]'";
+						$NA4Sains="sains_keterangan='$nilai_sains[3]'";
 					}
-					hitung_gain($kondisi , "jurusan" , $entropy_all , $NA1Jurusan , $NA2Jurusan , $NA3Jurusan , $NA4Jurusan , $NA5Jurusan);
+					hitung_gain($kondisi , "sains_keterangan" , $entropy_all , $NA1Sains , $NA2Sains , $NA3Sains , $NA4Sains , '');
+				}
+				//math
+				if($jml_math!=1){
+					$NA1Math="math_keterangan='$nilai_math[0]'";
+					$NA2Math="";
+					$NA3Math="";
+					$NA4Math="";
+					$NA5Math="";
+					if($jml_math==2){
+						$NA2Math="math_keterangan='$nilai_math[1]'";
+					}else if($jml_math==3){
+						$NA2Math="math_keterangan='$nilai_math[1]'";
+						$NA3Math="math_keterangan='$nilai_math[2]'";
+					}else if($jml_math==4){
+						$NA2Math="math_keterangan='$nilai_math[1]'";
+						$NA3Math="math_keterangan='$nilai_math[2]'";
+						$NA4Math="math_keterangan='$nilai_math[3]'";
+					}
+					hitung_gain($kondisi , "math_keterangan" , $entropy_all , $NA1Math , $NA2Math , $NA3Math , $NA4Math , '');
+				}
+				//b indonesia
+				if($jml_bindo!=1){
+					$NA1Bindo="bindo_keterangan='$nilai_bindo[0]'";
+					$NA2Bindo="";
+					$NA3Bindo="";
+					$NA4Bindo="";
+					$NA5Bindo="";
+					if($jml_bindo==2){
+						$NA2Bindo="bindo_keterangan='$nilai_bindo[1]'";
+					}else if($jml_bindo==3){
+						$NA2Bindo="bindo_keterangan='$nilai_bindo[1]'";
+						$NA3Bindo="bindo_keterangan='$nilai_bindo[2]'";
+					}else if($jml_bindo==4){
+						$NA2Bindo="bindo_keterangan='$nilai_bindo[1]'";
+						$NA3Bindo="bindo_keterangan='$nilai_bindo[2]'";
+						$NA4Bindo="bindo_keterangan='$nilai_bindo[3]'";
+					}
+					hitung_gain($kondisi , "bindo_keterangan" , $entropy_all , $NA1Bindo , $NA2Bindo , $NA3Bindo , $NA4Bindo , '');
 				}				
-				//kerja
-				if($jmlKerja!=1){
-					$NA1Kerja="kerja='$nilai_kerja[0]'";
-					$NA2Kerja="kerja='$nilai_kerja[1]'";
-					hitung_gain($kondisi , "kerja"	 , $entropy_all , $NA1Kerja , $NA2Kerja , "" , "" , "");
-				}
-				//motivasi
-				if($jmlMotivasi!=1){
-					$NA1Motivasi="motivasi='$nilai_motivasi[0]'";
-					$NA2Motivasi="";
-					$NA3Motivasi="";
-					if($jmlMotivasi==2){
-						$NA2Motivasi="motivasi='$nilai_motivasi[1]'";
-					}else if ($jmlMotivasi==3){
-						$NA2Motivasi="motivasi='$nilai_motivasi[1]'";
-						$NA3Motivasi="motivasi='$nilai_motivasi[2]'";
+				//b inggris
+				if($jml_bing!=1){
+					$NA1Bing="bing_keterangan='$nilai_bing[0]'";
+					$NA2Bing="";
+					$NA3Bing="";
+					$NA4Bing="";
+					$NA5Bing="";
+					if($jml_bing==2){
+						$NA2Bing="bing_keterangan='$nilai_bing[1]'";
+					}else if($jml_bing==3){
+						$NA2Bing="bing_keterangan='$nilai_bing[1]'";
+						$NA3Bing="bing_keterangan='$nilai_bing[2]'";
+					}else if($jml_bing==4){
+						$NA2Bing="bing_keterangan='$nilai_bing[1]'";
+						$NA3Bing="bing_keterangan='$nilai_bing[2]'";
+						$NA4Bing="bing_keterangan='$nilai_bing[3]'";
 					}
-					hitung_gain($kondisi , "motivasi" , $entropy_all , $NA1Motivasi, $NA2Motivasi, $NA3Motivasi, "" , "");
+					hitung_gain($kondisi , "bing_keterangan" , $entropy_all , $NA1Bing , $NA2Bing , $NA3Bing , $NA4Bing , '');
+				}
+				//ips
+				if($jml_ips!=1){
+					$NA1Ips="ips_keterangan='$nilai_ips[0]'";
+					$NA2Ips="";
+					$NA3Ips="";
+					$NA4Ips="";
+					$NA5Ips="";
+					if($jml_ips==2){
+						$NA2Ips="ips_keterangan='$nilai_ips[1]'";
+					}else if($jml_ips==3){
+						$NA2Ips="ips_keterangan='$nilai_ips[1]'";
+						$NA3Ips="ips_keterangan='$nilai_ips[2]'";
+					}else if($jml_ips==4){
+						$NA2Ips="ips_keterangan='$nilai_ips[1]'";
+						$NA3Ips="ips_keterangan='$nilai_ips[2]'";
+						$NA4Ips="ips_keterangan='$nilai_ips[3]'";
+					}
+					hitung_gain($kondisi , "ips_keterangan" , $entropy_all , $NA1Ips , $NA2Ips , $NA3Ips , $NA4Ips , '');
 				}																																				
-				//hitung gain atribut Numerik										
-					hitung_gain($kondisi , "rata UN posisi 6.5"	, $entropy_all , "rata_un<=6.5"	, "rata_un>6.5" , "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 6.75"	, $entropy_all , "rata_un<=6.75", "rata_un>6.75", "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 7"		, $entropy_all , "rata_un<=7"	, "rata_un>7"	, "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 7.25"	, $entropy_all , "rata_un<=7.25", "rata_un>7.25", "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 7.5" 	, $entropy_all , "rata_un<=7.5" , "rata_un>7.5" , "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 7.75"	, $entropy_all , "rata_un<=7.75", "rata_un>7.75", "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 8"		, $entropy_all , "rata_un<=8"	, "rata_un>8" 	, "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 8.25"	, $entropy_all , "rata_un<=8.25", "rata_un>8.25", "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 8.5"	, $entropy_all , "rata_un<=8.5" , "rata_un>8.5" , "" , "" , "");
-					hitung_gain($kondisi , "rata UN posisi 8.75"	, $entropy_all , "rata_un<=8.75", "rata_un>8.75", "" , "" , "");
-					
+				//aqidah
+				if($jml_aqidah!=1){
+					$NA1Aqidah="aqidah_keterangan='$nilai_aqidah[0]'";
+					$NA2Aqidah="";
+					$NA3Aqidah="";
+					$NA4Aqidah="";
+					$NA5Aqidah="";
+					if($jml_aqidah==2){
+						$NA2Aqidah="aqidah_keterangan='$nilai_aqidah[1]'";
+					}else if($jml_aqidah==3){
+						$NA2Aqidah="aqidah_keterangan='$nilai_aqidah[1]'";
+						$NA3Aqidah="aqidah_keterangan='$nilai_aqidah[2]'";
+					}else if($jml_aqidah==4){
+						$NA2Aqidah="aqidah_keterangan='$nilai_aqidah[1]'";
+						$NA3Aqidah="aqidah_keterangan='$nilai_aqidah[2]'";
+						$NA4Aqidah="aqidah_keterangan='$nilai_aqidah[3]'";
+					}
+					hitung_gain($kondisi , "aqidah_keterangan" , $entropy_all , $NA1Aqidah , $NA2Aqidah , $NA3Aqidah , $NA4Aqidah , '');
+				}																																				
+			
 				//ambil nilai gain tertinggi
 					$sql_max = mysql_query("SELECT MAX(gain) FROM gain");
 					$row_max = mysql_fetch_array($sql_max);	
@@ -213,105 +257,193 @@
 					echo "Atribut terpilih = ".$atribut.", dengan nilai gain = ".$max_gain."<br>";					
 					echo "<br>================================<br>";
 				//percabangan jika nilai atribut lebih dari 2 hitung rasio terlebih dahulu
-				//INSTANSI TERPILIH
-				if($atribut=="instansi"){
-					//jika nilai atribut 3
-					if($jmlInstansi==3){
-						//hitung rasio
-						$cabang = array();
-						$cabang = hitung_rasio($kondisi , 'instansi',$max_gain,$nilai_instansi[0],$nilai_instansi[1],$nilai_instansi[2],'','');
-						$exp_cabang = explode(" , ",$cabang[1]);						
-						proses_DT($kondisi , "($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");						
-					}
-					//jika nilai atribut 2
-					else if($jmlInstansi==2){
-						proses_DT($kondisi , "($atribut='$nilai_instansi[0]')" , "($atribut='$nilai_instansi[1]')");
-					}
-				}				
-				//STATUS TERPILIH
-				else if($atribut=="status"){					
-					proses_DT($kondisi , "($atribut='Negeri')","($atribut='Swasta')");										
-				}
-				//JURUSAN TERPILIH
-				else if($atribut=="jurusan"){
+				//SAINS TERPILIH
+				if($atribut=="sains_keterangan"){
 					//jika nilai atribut 5
-					if($jmlJurusan==5){
+					if($jml_sains==5){
 						//hitung rasio
 						$cabang = array();
-						$cabang = hitung_rasio($kondisi , 'jurusan',$max_gain,$nilai_jurusan[0],$nilai_jurusan[1],$nilai_jurusan[2],$nilai_jurusan[3],$nilai_jurusan[4]);
+						$cabang = hitung_rasio($kondisi , 'sains_keterangan',$max_gain,$nilai_bindo[0],$nilai_bindo[1],$nilai_bindo[2],$nilai_bindo[3],$nilai_bindo[4]);
 						$exp_cabang = explode(" , ",$cabang[1]);						
 						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]' OR $atribut='$exp_cabang[3]')");						
 					}					
 					//jika nilai atribut 4
-					else if($jmlJurusan==4){
+					else if($jml_sains==4){
 						//hitung rasio
 						$cabang = array();
-						$cabang = hitung_rasio($kondisi , 'jurusan',$max_gain,$nilai_jurusan[0],$nilai_jurusan[1],$nilai_jurusan[2],$nilai_jurusan[3],'');
+						$cabang = hitung_rasio($kondisi , 'sains_keterangan',$max_gain,$nilai_bindo[0],$nilai_bindo[1],$nilai_bindo[2],$nilai_bindo[3],'');
 						$exp_cabang = explode(" , ",$cabang[1]);
 						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]')");
 					}					
 					//jika nilai atribut 3
-					else if($jmlJurusan==3){
+					else if($jml_sains==3){
 						//hitung rasio
 						$cabang = array();
-						$cabang = hitung_rasio($kondisi , 'jurusan',$max_gain,$nilai_jurusan[0],$nilai_jurusan[1],$nilai_jurusan[2],'','');
+						$cabang = hitung_rasio($kondisi , 'sains_keterangan',$max_gain,$nilai_bindo[0],$nilai_bindo[1],$nilai_bindo[2],'','');
 						$exp_cabang = explode(" , ",$cabang[1]);
 						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");
 					}
 					//jika nilai atribut 2
-					else if($jmlJurusan==2){
-						proses_DT($kondisi,"($atribut='$nilai_jurusan[0]')" , "($atribut='$nilai_jurusan[1]')");
-					}
-				}
-				//RATA UN TERPILIH
-				else if($atribut=="rata UN posisi 6.5"){					
-					proses_DT($kondisi,"(rata_un<=6.5)","(rata_un>6.5)");					
-				}
-				else if($atribut=="rata UN posisi 6.75"){					
-					proses_DT($kondisi,"(rata_un<=6.75)","(rata_un>6.75)");					
-				}
-				else if($atribut=="rata UN posisi 7"){					
-					proses_DT($kondisi,"(rata_un<=7)","(rata_un>7)");					
-				}
-				else if($atribut=="rata UN posisi 7.25"){					
-					proses_DT($kondisi,"(rata_un<=7.25)","(rata_un>7.25)");					
-				}
-				else if($atribut=="rata UN posisi 7.5"){					
-					proses_DT($kondisi,"(rata_un<=7.5)","(rata_un>7.5)");			
-				}
-				else if($atribut=="rata UN posisi 7.75"){					
-					proses_DT($kondisi,"(rata_un<=7.75)","(rata_un>7.75)");					
-				}
-				else if($atribut=="rata UN posisi 8"){					
-					proses_DT($kondisi,"(rata_un<=8)","(rata_un>8)");					
-				}
-				else if($atribut=="rata UN posisi 8.25"){					
-					proses_DT($kondisi,"(rata_un<=8.25)","(rata_un>8.25)");					
-				}
-				else if($atribut=="rata UN posisi 8.5"){					
-					proses_DT($kondisi,"(rata_un<=8.5)","(rata_un>8.5)");					
-				}
-				else if($atribut=="rata UN posisi 8.75"){					
-					proses_DT($kondisi,"(rata_un<=8.75)","(rata_un>8.75)");					
-				}
-				//KERJA TERPILIH
-				else if($atribut=="kerja"){					
-					proses_DT($kondisi,"($atribut='Sudah')","($atribut='Belum')");					
-				}
-				//MOTIVASI TERPILIH
-				else if($atribut=="motivasi"){
-					//jika nilai atribut 3
-					if($jmlMotivasi==3){
-						$cabang = array();
-						$cabang = hitung_rasio($kondisi , 'motivasi',$max_gain,$nilai_motivasi[0],$nilai_motivasi[1],$nilai_motivasi[2],'','');
-						$exp_cabang = explode(" , ",$cabang[1]);							
-						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");						
-					}
-					//jika nilai atribut 2
-					else if($jmlMotivasi==2){
-						proses_DT($kondisi,"($atribut='$nilai_motivasi[0]')" , "($atribut='$nilai_motivasi[1]')");
+					else if($jml_sains==2){
+						proses_DT($kondisi,"($atribut='$nilai_bindo[0]')" , "($atribut='$nilai_bindo[1]')");
 					}
 				}				
+				//MATH TERPILIH
+				else if($atribut=="math_keterangan"){					
+					//jika nilai atribut 5
+					if($jml_math==5){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'math_keterangan',$max_gain,$nilai_math[0],$nilai_math[1],$nilai_math[2],$nilai_math[3],$nilai_math[4]);
+						$exp_cabang = explode(" , ",$cabang[1]);						
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]' OR $atribut='$exp_cabang[3]')");						
+					}					
+					//jika nilai atribut 4
+					else if($jml_math==4){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'math_keterangan',$max_gain,$nilai_math[0],$nilai_math[1],$nilai_math[2],$nilai_math[3],'');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]')");
+					}					
+					//jika nilai atribut 3
+					else if($jml_math==3){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'math_keterangan',$max_gain,$nilai_math[0],$nilai_math[1],$nilai_math[2],'','');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");
+					}
+					//jika nilai atribut 2
+					else if($jml_math==2){
+						proses_DT($kondisi,"($atribut='$nilai_math[0]')" , "($atribut='$nilai_math[1]')");
+					}										
+				}
+				//BINDO TERPILIH
+				else if($atribut=="bindo_keterangan"){
+					//jika nilai atribut 5
+					if($jml_bindo==5){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'bindo_keterangan',$max_gain,$nilai_bindo[0],$nilai_bindo[1],$nilai_bindo[2],$nilai_bindo[3],$nilai_bindo[4]);
+						$exp_cabang = explode(" , ",$cabang[1]);						
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]' OR $atribut='$exp_cabang[3]')");						
+					}					
+					//jika nilai atribut 4
+					else if($jml_bindo==4){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'bindo_keterangan',$max_gain,$nilai_bindo[0],$nilai_bindo[1],$nilai_bindo[2],$nilai_bindo[3],'');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]')");
+					}					
+					//jika nilai atribut 3
+					else if($jml_bindo==3){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'bindo_keterangan',$max_gain,$nilai_bindo[0],$nilai_bindo[1],$nilai_bindo[2],'','');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");
+					}
+					//jika nilai atribut 2
+					else if($jml_bindo==2){
+						proses_DT($kondisi,"($atribut='$nilai_bindo[0]')" , "($atribut='$nilai_bindo[1]')");
+					}
+				}
+				//BING TERPILIH
+				else if($atribut=="bing_keterangan"){
+					//jika nilai atribut 5
+					if($jml_bing==5){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'bing_keterangan',$max_gain,$nilai_bing[0],$nilai_bing[1],$nilai_bing[2],$nilai_bing[3],$nilai_bing[4]);
+						$exp_cabang = explode(" , ",$cabang[1]);						
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]' OR $atribut='$exp_cabang[3]')");						
+					}					
+					//jika nilai atribut 4
+					else if($jml_bing==4){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'bing_keterangan',$max_gain,$nilai_bing[0],$nilai_bing[1],$nilai_bing[2],$nilai_bing[3],'');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]')");
+					}					
+					//jika nilai atribut 3
+					else if($jml_bing==3){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'bing_keterangan',$max_gain,$nilai_bing[0],$nilai_bing[1],$nilai_bing[2],'','');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");
+					}
+					//jika nilai atribut 2
+					else if($jml_bing==2){
+						proses_DT($kondisi,"($atribut='$nilai_bing[0]')" , "($atribut='$nilai_bing[1]')");
+					}
+				}
+				//IPS TERPILIH
+				else if($atribut=="ips_keterangan"){
+					//jika nilai atribut 5
+					if($jml_ips==5){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'ips_keterangan',$max_gain,$nilai_ips[0],$nilai_ips[1],$nilai_ips[2],$nilai_ips[3],$nilai_ips[4]);
+						$exp_cabang = explode(" , ",$cabang[1]);						
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]' OR $atribut='$exp_cabang[3]')");						
+					}					
+					//jika nilai atribut 4
+					else if($jml_ips==4){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'ips_keterangan',$max_gain,$nilai_ips[0],$nilai_ips[1],$nilai_ips[2],$nilai_ips[3],'');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]')");
+					}					
+					//jika nilai atribut 3
+					else if($jml_ips==3){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'ips_keterangan',$max_gain,$nilai_ips[0],$nilai_ips[1],$nilai_ips[2],'','');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");
+					}
+					//jika nilai atribut 2
+					else if($jml_ips==2){
+						proses_DT($kondisi,"($atribut='$nilai_ips[0]')" , "($atribut='$nilai_ips[1]')");
+					}
+				}
+				//AQIDAH TERPILIH
+				else if($atribut=="aqidah_keterangan"){
+					//jika nilai atribut 5
+					if($jml_aqidah==5){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'aqidah_keterangan',$max_gain,$nilai_aqidah[0],$nilai_aqidah[1],$nilai_aqidah[2],$nilai_aqidah[3],$nilai_aqidah[4]);
+						$exp_cabang = explode(" , ",$cabang[1]);						
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]' OR $atribut='$exp_cabang[3]')");						
+					}					
+					//jika nilai atribut 4
+					else if($jml_aqidah==4){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'aqidah_keterangan',$max_gain,$nilai_aqidah[0],$nilai_aqidah[1],$nilai_aqidah[2],$nilai_aqidah[3],'');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]' OR $atribut='$exp_cabang[2]')");
+					}					
+					//jika nilai atribut 3
+					else if($jml_aqidah==3){
+						//hitung rasio
+						$cabang = array();
+						$cabang = hitung_rasio($kondisi , 'aqidah_keterangan',$max_gain,$nilai_aqidah[0],$nilai_aqidah[1],$nilai_aqidah[2],'','');
+						$exp_cabang = explode(" , ",$cabang[1]);
+						proses_DT($kondisi,"($atribut='$cabang[0]')","($atribut='$exp_cabang[0]' OR $atribut='$exp_cabang[1]')");
+					}
+					//jika nilai atribut 2
+					else if($jml_aqidah==2){
+						proses_DT($kondisi,"($atribut='$nilai_aqidah[0]')" , "($atribut='$nilai_aqidah[1]')");
+					}
+				}
+					
 			}
 		}						
 	}

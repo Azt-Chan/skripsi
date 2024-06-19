@@ -67,14 +67,14 @@
 		$gagal = 0;
 		//import data excel dari baris kedua, karena baris pertama adalah nama kolom
 		for ($i=2; $i<=$baris; $i++) {			
-			$nim = $data->val($i,1);
+			$nis = $data->val($i,1);
 			$nama = $data->val($i,2); 
 			$jk = $data->val($i,3);
 			$angkatan = $data->val($i,4);
 			$kelas = $data->val($i,5);			
 			//setelah data dibaca, sisipkan ke dalam tabel 
-			mysql_query("INSERT INTO mahasiswa VALUES ('$nim','$nama','$jk','$angkatan','$kelas')");
-			mysql_query("INSERT INTO user VALUES ('$nim','$nama','$nim','1')");
+			mysql_query("INSERT INTO mahasiswa VALUES ('$nis','$nama','$jk','$angkatan','$kelas')");
+			mysql_query("INSERT INTO user VALUES ('$nis','$nama','$nis','1')");
 			//menambah counter jika berhasil atau gagal
 			if($hasil) $sukses++;
 				else $gagal++;

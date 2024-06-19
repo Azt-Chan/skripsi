@@ -27,21 +27,21 @@
 		}
 	</script>
 </head>
-<body>
+<body style="background: white !important">
 	<div>
-		<center><h2>Login</h2><h4>Sistem Prediksi Prestasi Akademik Mahasiswa</h4><br></center>
+		<center><h2>Login</h2><h4>Sistem Prediksi Siswa Terbaik</h4><br></center>
 	</div>
-	<div class="wrap">
+	<div class="wrap" >
 		<div id="content">			
 			<div id="main">		
-				<div class="full_w">
+				<div class="full_w" style="border-radius: 12px; padding-top: 16px; padding-bottom: 16px;">
 					<form action="cekLogin.php" method="post" onSubmit="return validasi(this)">
-						<label for="user">Username:</label>
+						<label for="user" style="color: white">Username:</label>
 							<input id="user" name="user" class="text" placeholder="Username"/>
-						<label for="pass">Password:</label>
+						<label for="pass" style="color: white">Password:</label>
 							<input id="pass" name="pass" type="password" class="text" placeholder="Password"/>
 						<div class="sep"></div>
-							<button type="submit" class="ok">Login</button>
+							<button type="submit" class="ok" style="display: block; width: 100%; background: white">Login</button>
 					</form>
 				</div>
 				
