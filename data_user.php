@@ -77,6 +77,7 @@
 								}
 							?></td>
 						<td>							
+							<a href="index.php?menu=form_prediksi&id=<?php echo $row[0]; ?>">Isi data prediksi</a> |
 							<a href="index.php?menu=user&act=delete&id=<?php echo $row[0]; ?>" onclick="return confirm('Anda yakin akan hapus data ini?')">Delete</a>
 						</td>
 					</tr>

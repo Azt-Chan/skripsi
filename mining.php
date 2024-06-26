@@ -48,12 +48,12 @@
 				?>
 					<tr bgcolor=<?php echo $warna; ?> align=center>
 						<td><?php echo $row['id'];?></td>			
-						<td><?php echo getKeterangan((float)$row['sains']);?></td>
-						<td><?php echo getKeterangan((float)$row['math']);?></td>
-						<td><?php echo getKeterangan((float)$row['bindo']);?></td>
-						<td><?php echo getKeterangan((float)$row['bing']);?></td>
-						<td><?php echo getKeterangan((float)$row['ips']);?></td>
-						<td><?php echo getKeterangan((float)$row['aqidah']);?></td>
+						<td><?php echo $row['sains_keterangan'];?></td>
+						<td><?php echo $row['math_keterangan'];?></td>
+						<td><?php echo $row['bindo_keterangan'];?></td>
+						<td><?php echo $row['bing_keterangan'];?></td>
+						<td><?php echo $row['ips_keterangan'];?></td>
+						<td><?php echo $row['aqidah_keterangan'];?></td>
 						<td><?php echo $row['terbaik'];?></td>	
 					</tr>
 				<?php

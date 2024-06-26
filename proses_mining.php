@@ -149,7 +149,7 @@
 						$NA3Sains="sains_keterangan='$nilai_sains[2]'";
 						$NA4Sains="sains_keterangan='$nilai_sains[3]'";
 					}
-					hitung_gain($kondisi , "sains_keterangan" , $entropy_all , $NA1Sains , $NA2Sains , $NA3Sains , $NA4Sains , '');
+					hitung_gain($kondisi , "sains_keterangan" , $entropy_all , $NA1Sains , $NA2Sains , $NA3Sains , $NA4Sains , $NA5Sains);
 				}
 				//math
 				if($jml_math!=1){
@@ -168,7 +168,7 @@
 						$NA3Math="math_keterangan='$nilai_math[2]'";
 						$NA4Math="math_keterangan='$nilai_math[3]'";
 					}
-					hitung_gain($kondisi , "math_keterangan" , $entropy_all , $NA1Math , $NA2Math , $NA3Math , $NA4Math , '');
+					hitung_gain($kondisi , "math_keterangan" , $entropy_all , $NA1Math , $NA2Math , $NA3Math , $NA4Math , $NA5Math);
 				}
 				//b indonesia
 				if($jml_bindo!=1){
@@ -187,7 +187,7 @@
 						$NA3Bindo="bindo_keterangan='$nilai_bindo[2]'";
 						$NA4Bindo="bindo_keterangan='$nilai_bindo[3]'";
 					}
-					hitung_gain($kondisi , "bindo_keterangan" , $entropy_all , $NA1Bindo , $NA2Bindo , $NA3Bindo , $NA4Bindo , '');
+					hitung_gain($kondisi , "bindo_keterangan" , $entropy_all , $NA1Bindo , $NA2Bindo , $NA3Bindo , $NA4Bindo , $NA5Bindo);
 				}				
 				//b inggris
 				if($jml_bing!=1){
@@ -206,7 +206,7 @@
 						$NA3Bing="bing_keterangan='$nilai_bing[2]'";
 						$NA4Bing="bing_keterangan='$nilai_bing[3]'";
 					}
-					hitung_gain($kondisi , "bing_keterangan" , $entropy_all , $NA1Bing , $NA2Bing , $NA3Bing , $NA4Bing , '');
+					hitung_gain($kondisi , "bing_keterangan" , $entropy_all , $NA1Bing , $NA2Bing , $NA3Bing , $NA4Bing , $NA5Bing);
 				}
 				//ips
 				if($jml_ips!=1){
@@ -225,7 +225,7 @@
 						$NA3Ips="ips_keterangan='$nilai_ips[2]'";
 						$NA4Ips="ips_keterangan='$nilai_ips[3]'";
 					}
-					hitung_gain($kondisi , "ips_keterangan" , $entropy_all , $NA1Ips , $NA2Ips , $NA3Ips , $NA4Ips , '');
+					hitung_gain($kondisi , "ips_keterangan" , $entropy_all , $NA1Ips , $NA2Ips , $NA3Ips , $NA4Ips , $NA5Ips);
 				}																																				
 				//aqidah
 				if($jml_aqidah!=1){
@@ -244,7 +244,7 @@
 						$NA3Aqidah="aqidah_keterangan='$nilai_aqidah[2]'";
 						$NA4Aqidah="aqidah_keterangan='$nilai_aqidah[3]'";
 					}
-					hitung_gain($kondisi , "aqidah_keterangan" , $entropy_all , $NA1Aqidah , $NA2Aqidah , $NA3Aqidah , $NA4Aqidah , '');
+					hitung_gain($kondisi , "aqidah_keterangan" , $entropy_all , $NA1Aqidah , $NA2Aqidah , $NA3Aqidah , $NA4Aqidah , $NA5Aqidah);
 				}																																				
 			
 				//ambil nilai gain tertinggi

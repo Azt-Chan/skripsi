@@ -36,15 +36,14 @@
 					echo "<li class='first'><a href='index.php?menu=home' accesskey='1' title='Beranda'>Beranda</a></li>
 							<li><a href='?menu=data' accesskey='1' title='Data Training'>Data Training</a></li>
 							<li><a href='?menu=mining' accesskey='2' title='Proses Pembentukan Tree'>Mining</a></li>
-							<li><a href='?menu=tree' accesskey='3' title='Rule Pohon Keputusan'>Pohon Keputusan</a></li>
+							<li><a href='?menu=pohon_tree' accesskey='3' title='Rule Pohon Keputusan'>Pohon Keputusan</a></li>
 							<li><a href='?menu=hasil' accesskey='4' title='Hasil Prediksi'>Hasil Prediksi</a></li>
 							<li><a href='?menu=user' accesskey='5' title='Data User'>Data User</a></li>";
 				}
 				//jika user mahasiswa
 				else{
 					echo "<li class='first'><a href='?menu=home' accesskey='1' title='Beranda'>Beranda</a></li>
-							<li><a href='?menu=prediksi' accesskey='prediksi' title='Prediksi Prestasi'>Prediksi</a></li>							
-							<li><a href='?menu=tree' accesskey='tree' title='Rule Pohon Keputusan'>Pohon Keputusan</a></li>";
+							<li><a href='?menu=prediksi' accesskey='prediksi' title='Prediksi Prestasi'>Prediksi</a></li>";
 				}
 			?>								
 		</ul>
@@ -104,11 +103,15 @@
 							}
 							//menu prediksi
 							else if($kode=='prediksi'){
-								include 'prediksi.php';
+								include 'hasil_prediksi.php';
 							}
 							//menu ubah password
 							else if($kode=='ubah_password'){
 								include 'ubah_password.php';
+							}
+							//menu ubah password
+							else if($kode=='form_prediksi'){
+								include 'form_prediksi.php';
 							}
 						}
 						//jika menu belum diset

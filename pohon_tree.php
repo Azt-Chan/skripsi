@@ -1,4 +1,4 @@
-<a href="?menu=tree" >Lihat Rule/Aturan yang terbentuk</a><br><br>
+<!-- <a href="?menu=tree" >Lihat Rule/Aturan yang terbentuk</a><br><br> -->
 <?php
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 include "koneksi.php";

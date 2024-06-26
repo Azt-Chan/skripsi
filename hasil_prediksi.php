@@ -1,5 +1,8 @@
 <?php
 	include "koneksi.php";
+
+	// var_dump($_SESSION);die;
+
 	if(isset($_GET['act'])){
 		$action=$_GET['act'];				
 		//delete semua data
@@ -20,11 +23,13 @@
 		else{
 			echo "Jumlah data : ".$jumlah;	
 ?>
+			<?php if($_SESSION['lvl'] == '0'): ?> 
 			<p>
 				Opsi: 
 				<a href="index.php?menu=hasil&act=delete_all" onClick="return confirm('Anda yakin akan hapus semua data?')">Hapus Semua Data</a> | 
 				<a href="export/CLP.php?format=3">Download Laporan</a>
 			</p>
+			<?php endif; ?>
 			
 			<table bgcolor='#7c96ba' border='1' cellspacing='0' cellspading='0' align='center' width=900>
 				<tr align='center'>
@@ -42,9 +47,15 @@
 						$warna = $warna1; 
 					} 			
 			?>
-					<tr bgcolor=<?php echo $warna; ?> align=center>
+					<tr 
+					style="<?= $_SESSION['usr'] == $row[0] ? 'font-weight: 700' : '' ?>"
+					bgcolor=<?php echo $warna; ?> align=center>
 						<td><?php echo $no;?></td>			
-						<td><?php echo $row[0];?></td>
+						<td
+							
+						>
+							<?php echo $row[0];?>
+						</td>
 						<td><?php echo $row[1];?></td>
 						<td><?php echo $row[2];?></td>
 						<td><?php echo $row[3];?></td>

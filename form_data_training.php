@@ -2,23 +2,17 @@
 	<table align='center' >
 		<tr>
 			<td>
-				0-25 : Cukup
-			</td>
-		</tr>
-
-		<tr>
-			<td>
-				26-50 : Baik
+				60-75 : Baik
 			</td>
 		</tr>
 		<tr>
 			<td>
-				51-75 : Cukup baik
+				76-85 : Cukup baik
 			</td>
 		</tr>
 		<tr>
 			<td>
-				76-100 : Sangat baik
+				86-100 : Sangat baik
 			</td>
 		</tr>
 
@@ -39,37 +33,37 @@
 		<tr>
 			<td>Sains</td>        
 			<td>: </td>
-			<td>	<input name='sains' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>										
+			<td>	<input name='sains' type='number' step=".01" min="60" max="100" style="width:50px;" required="required"> </td>										
 		</tr>
 
 		<tr>
 			<td>Matematika</td>        
 			<td>: </td>
-			<td>	<input name='math' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>										
+			<td>	<input name='math' type='number' step=".01" min="60" max="100" style="width:50px;" required="required"> </td>										
 		</tr>
 
 		<tr>
 			<td>B. Indonesia</td>        
 			<td>: </td>
-			<td>	<input name='bindo' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>										
+			<td>	<input name='bindo' type='number' step=".01" min="60" max="100" style="width:50px;" required="required"> </td>										
 		</tr>
 
 		<tr>
 			<td>B. Inggris</td>        
 			<td>: </td>
-			<td>	<input name='bing' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>					
+			<td>	<input name='bing' type='number' step=".01" min="60" max="100" style="width:50px;" required="required"> </td>					
 		</tr>
 
 		<tr>
 			<td>IPS</td>        
 			<td>: </td>
-			<td>	<input name='ips' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>
+			<td>	<input name='ips' type='number' step=".01" min="60" max="100" style="width:50px;" required="required"> </td>
 		</tr>
 
 		<tr>
 			<td>Aqidah Akhlaq</td>        
 			<td>: </td>
-			<td>	<input name='aqidah' type='number' step=".01" min="0" max="100" style="width:50px;" required="required"> </td>				
+			<td>	<input name='aqidah' type='number' step=".01" min="60" max="100" style="width:50px;" required="required"> </td>				
 		</tr>
 
 		<tr>

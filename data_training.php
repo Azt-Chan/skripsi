@@ -64,12 +64,12 @@
 			?>
 					<tr bgcolor=<?php echo $warna; ?> align='center'>
 						<td><?php echo $no;?></td>			
-						<td><?php echo $row['sains'];?> (<?php echo getKeterangan(floatval($row['sains']));?>)</td>
-						<td><?php echo $row['math'];?> (<?php echo getKeterangan(floatval($row['math']));?>)</td>
-						<td><?php echo $row['bindo'];?>(<?php echo getKeterangan(floatval($row['bindo']));?>)</td>
-						<td><?php echo $row['bing'];?> (<?php echo getKeterangan(floatval($row['bing']));?>)</td>
-						<td><?php echo $row['ips'];?> (<?php echo getKeterangan(floatval($row['ips']));?>)</td>
-						<td><?php echo $row['aqidah'];?> (<?php echo getKeterangan(floatval($row['aqidah']));?>)</td>
+						<td><?php echo $row['sains'];?> (<?php echo $row['sains_keterangan'];?>)</td>
+						<td><?php echo $row['math'];?> (<?php echo $row['math_keterangan'];?>)</td>
+						<td><?php echo $row['bindo'];?>(<?php echo $row['bindo_keterangan'];?>)</td>
+						<td><?php echo $row['bing'];?> (<?php echo $row['bing_keterangan'];?>)</td>
+						<td><?php echo $row['ips'];?> (<?php echo $row['ips_keterangan'];?>)</td>
+						<td><?php echo $row['aqidah'];?> (<?php echo $row['aqidah_keterangan'];?>)</td>
 						<td><?php echo $row['terbaik'];?></td>
 						<td>
 							<a href="index.php?menu=data&act=update&id=<?php echo $row['id']; ?>">Update | </a>	

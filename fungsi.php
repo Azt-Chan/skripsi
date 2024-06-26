@@ -358,18 +358,15 @@
 		return $opsiMax;		
 	}
 
-	// 0-25 : Cukup
-	// 26-50 : Baik
-	// 51-75 : Cukup baik
-	// 76-100 : Sangat baik
+	// 60-75 : Baik
+	// 76-85 : Cukup baik
+	// 86-100 : Sangat baik
 	function getKeterangan($nilai){
-		if($nilai>=0 && $nilai<=25){
-			return "Cukup";
-		}else if($nilai>=26 && $nilai<=50){
+		if($nilai>=60 && $nilai<=75){
 			return "Baik";
-		}else if($nilai>=51 && $nilai<=75){
+		}else if($nilai>=76 && $nilai<=85){
 			return "Cukup Baik";
-		}else if($nilai>=76 && $nilai<=100){
+		}else if($nilai>=86 && $nilai<=100){
 			return "Sangat Baik";
 		}
 	}
