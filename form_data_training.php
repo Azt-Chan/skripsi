@@ -2,17 +2,27 @@
 	<table align='center' >
 		<tr>
 			<td>
+				0 - 50 : Kurang
+			</td>
+		</tr>
+		<tr>
+			<td>
+				51-59 : Cukup 
+			</td>
+		</tr>
+		<tr>
+			<td>
 				60-75 : Baik
 			</td>
 		</tr>
 		<tr>
 			<td>
-				76-85 : Cukup baik
+				76-85 : Cukup baik 
 			</td>
 		</tr>
 		<tr>
 			<td>
-				86-100 : Sangat baik
+				86-100 : sangat baik
 			</td>
 		</tr>
 

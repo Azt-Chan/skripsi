@@ -358,16 +358,24 @@
 		return $opsiMax;		
 	}
 
+	// 0-50 : kurang 
+	// 51-59 : Cukup 
 	// 60-75 : Baik
-	// 76-85 : Cukup baik
-	// 86-100 : Sangat baik
+	// 76-85 : Cukup baik 
+	// 86-100 : sangat baik
 	function getKeterangan($nilai){
-		if($nilai>=60 && $nilai<=75){
-			return "Baik";
-		}else if($nilai>=76 && $nilai<=85){
-			return "Cukup Baik";
-		}else if($nilai>=86 && $nilai<=100){
-			return "Sangat Baik";
+		$keterangan = '';
+		if($nilai>=0 and $nilai<=50){
+			$keterangan = "Kurang";
+		}else if($nilai>=51 and $nilai<=59){
+			$keterangan = "Cukup";
+		}else if($nilai>=60 and $nilai<=75){
+			$keterangan = "Baik";
+		}else if($nilai>=76 and $nilai<=85){
+			$keterangan = "Cukup Baik";
+		}else if($nilai>=86 and $nilai<=100){
+			$keterangan = "Sangat Baik";
 		}
+		return $keterangan;
 	}
 ?>
